@@ -15,14 +15,24 @@ namespace AirTickets.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.TheMessage = "About";
 
             return View();
         }
 
+        [HttpGet]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.TheMessage = "Having trouble ? Send us a message.";
+
+            return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(string message)
+        {
+            // TODO: send message to adminastrator
+            ViewBag.TheMessage = "Message sent";
 
             return View();
         }
