@@ -26,6 +26,9 @@ namespace AirTickets
             bundles.Add(new StyleBundle("~/Content/css").Include(
                       "~/Content/bootstrap.css",
                       "~/Content/site.css"));
+
+            // minifying files in release mode
+            BundleTable.EnableOptimizations = false;
         }
     }
 }
