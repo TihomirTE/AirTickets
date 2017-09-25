@@ -32,14 +32,27 @@ namespace AirTickets.Controllers
         public ActionResult Contact(string message)
         {
             // TODO: send message to adminastrator
+            if (message == string.Empty)
+            {
+                ViewBag.TheMessage = "Message can not be empty! Try again!";
+                return View();
+            }
+
             ViewBag.TheMessage = "Message sent";
 
             return View();
         }
 
-        public ActionResult Test()
+        public ActionResult Serial(string letterCase)
         {
-            return View();
+            var serial = "MVC 5 project";
+
+            if (letterCase == "lower")
+            {
+                return Content(serial.ToLower());
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
