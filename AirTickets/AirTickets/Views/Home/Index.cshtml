@@ -10,17 +10,21 @@
     </div>
 </div>
 
-@*<ul class="nav nav-tabs">
+<ul class="nav nav-tabs">
     <li role="presentation">
-       <a href="@Html.Partial("Flight")" >Flight</a>
+       <a href="#" >Flight</a>
+        @{ Html.RenderPartial("Flight"); }
     </li>
     <li role="presentation">
-        <a href="@Html.Partial("Hotel")" >Hotel</a>
+        <a href="#" >Hotel</a>
+        @{ Html.RenderPartial("Hotel"); }
+
+
     </li>
    
-</ul>*@
+</ul>
 
-@Ajax.ActionLink("Flights", "Flight",
+@*@Ajax.ActionLink("Flights", "Flight",
     new AjaxOptions
     {
         UpdateTargetId = "FlightList",
@@ -35,5 +39,5 @@
         UpdateTargetId = "HotelList",
         InsertionMode = InsertionMode.Replace,
         HttpMethod = "GET"
-    })
+    })*@
 
