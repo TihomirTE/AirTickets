@@ -270,10 +270,11 @@
     <Content Include="Views\Manage\VerifyPhoneNumber.cshtml" />
     <Content Include="Views\Shared\Lockout.cshtml" />
     <Content Include="Views\Shared\_LoginPartial.cshtml" />
-    <Content Include="Views\Home\Flight.cshtml" />
-    <Content Include="Views\Home\Hotel.cshtml" />
+    <Content Include="Views\Home\_Flight.cshtml" />
+    <Content Include="Views\Home\_Hotel.cshtml" />
     <Content Include="Views\Home\_ContactThanks.cshtml" />
     <Content Include="Views\Home\_EmptyContact.cshtml" />
+    <Content Include="Views\Home\_CarHire.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
