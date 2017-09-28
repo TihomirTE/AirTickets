@@ -21,8 +21,11 @@ namespace AirTickets.Models
 
         public int? NumberOfTickets { get; set; }
 
+        public int? NumberOfPassengers { get; set; }
+
         public virtual ApplicationUser User { get; set; }
 
+        [Required]
         public string ApplicationUserId { get; set; }
     }
 }
