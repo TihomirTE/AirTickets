@@ -278,6 +278,7 @@
     <Content Include="Views\Home\_EmptyContact.cshtml" />
     <Content Include="Views\Home\_CarHire.cshtml" />
     <Content Include="Views\ViewProfile\Details.cshtml" />
+    <Content Include="Views\ViewProfile\Edit.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

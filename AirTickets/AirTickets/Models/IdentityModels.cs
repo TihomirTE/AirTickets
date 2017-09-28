@@ -29,5 +29,7 @@ namespace AirTickets.Models
         {
             return new ApplicationDbContext();
         }
+
+        public DbSet<ViewProfile> ViewProfile { get; set; }
     }
 }
