@@ -9,6 +9,7 @@ using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using AirTickets.Models;
+using AirTickets.Services;
 
 namespace AirTickets.Controllers
 {
@@ -155,16 +156,8 @@ namespace AirTickets.Controllers
                 var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    var db = new ApplicationDbContext();
-                    var viewProfile = new ViewProfile
-                    {
-                        FirstName = model.FirstName,
-                        LastName = model.LastName,
-                        NumberOfTickets = 0,
-                        ApplicationUserId = user.Id
-                    };
-                    db.ViewProfile.Add(viewProfile);
-                    db.SaveChanges();
+                    var service = new ViewProfileService(HttpContext.GetOwinContext().Get<ApplicationDbContext>());
+                    service.CreateViewProfile(model.FirstName, model.LastName, user.Id, 0);
 
                     await SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
@@ -385,6 +378,9 @@ namespace AirTickets.Controllers
                     result = await UserManager.AddLoginAsync(user.Id, info.Login);
                     if (result.Succeeded)
                     {
+                        var service = new ViewProfileService(HttpContext.GetOwinContext().Get<ApplicationDbContext>());
+                        service.CreateViewProfile("Pesho", "Face", user.Id, 0);
+
                         await SignInManager.SignInAsync(user, isPersistent: false, rememberBrowser: false);
                         return RedirectToLocal(returnUrl);
                     }
