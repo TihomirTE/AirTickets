@@ -1,6 +1,7 @@
 namespace AirTickets.Data.Migrations
 {
     using AirTickets.Data.Model;
+    using AirTickets.Data.Model.Enum;
     using Microsoft.AspNet.Identity;
     using Microsoft.AspNet.Identity.EntityFramework;
     using System;
@@ -42,11 +43,30 @@ namespace AirTickets.Data.Migrations
                     UserName = AdministratorUserName,
                     Email = AdministratorUserName,
                     EmailConfirmed = true,
-                    //CreatedOn = DateTime.Now
+                    CreatedOn = DateTime.Now
                 };
 
                 userManager.Create(user, AdministratorPassword);
                 userManager.AddToRole(user.Id, "Admin");
+            }
+        }
+
+        private void SeedSimpleData(MsSqlDbContext context)
+        {
+            if (!context.Tickets.Any())
+            {
+                for (int i = 0; i < 5; i++)
+                {
+                    var ticket = new Ticket()
+                    {
+                        Price = 100 + i,
+                        TravelClass = TravelClass.First,
+                        Customer = context.Users.First(x => x.Email == "pesho@thebest.com"),
+                        CreatedOn = DateTime.Now
+                    };
+
+                    context.Tickets.Add(ticket);
+                }
             }
         }
     }
