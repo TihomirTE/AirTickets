@@ -1,0 +1,15 @@
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\bin\Debug\AirTickets.Data.Model.dll.config
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\bin\Debug\AirTickets.Data.Model.dll
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\bin\Debug\AirTickets.Data.Model.pdb
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\bin\Debug\EntityFramework.dll
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\bin\Debug\EntityFramework.SqlServer.dll
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\bin\Debug\Microsoft.AspNet.Identity.Core.dll
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.dll
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\bin\Debug\EntityFramework.xml
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\bin\Debug\EntityFramework.SqlServer.xml
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\bin\Debug\Microsoft.AspNet.Identity.Core.xml
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\bin\Debug\Microsoft.AspNet.Identity.EntityFramework.xml
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\obj\Debug\AirTickets.Data.Model.csproj.CoreCompileInputs.cache
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\obj\Debug\AirTickets.Data.Model.dll
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\obj\Debug\AirTickets.Data.Model.pdb
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data.Model\obj\Debug\AirTickets.Data.Model.csprojResolveAssemblyReference.cache
