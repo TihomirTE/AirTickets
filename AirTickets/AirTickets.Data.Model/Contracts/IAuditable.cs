@@ -9,8 +9,7 @@ namespace AirTickets.Data.Model.Contracts
     // tracking modification on the entity
     public interface IAuditable
     {
-        DateTime? CreateOn { get; set; }
-
         DateTime? ModifiedOn { get; set; }
+        DateTime? CreatedOn { get; set; }
     }
 }

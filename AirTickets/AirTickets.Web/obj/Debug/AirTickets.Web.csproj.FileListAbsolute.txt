@@ -130,3 +130,5 @@ E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\WebActivatorEx.dl
 E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\Ninject.xml
 E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\Ninject.Web.Common.xml
 E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\Ninject.Web.Mvc.xml
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\Ninject.Extensions.Conventions.dll
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\Ninject.Extensions.Conventions.xml

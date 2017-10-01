@@ -22,7 +22,7 @@ namespace AirTickets.Data.Model.Abstracts
         public bool IsDeleted { get; set; }
 
         [DataType(DataType.DateTime)]
-        public DateTime? CreateOn { get; set ; }
+        public DateTime? CreatedOn { get; set ; }
 
         [DataType(DataType.DateTime)]
         public DateTime? ModifiedOn { get; set; }
