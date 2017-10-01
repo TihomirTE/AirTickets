@@ -8,5 +8,6 @@ namespace AirTickets.Data.Model
 {
     public class Ticket
     {
+        public Guid Id { get; set; }
     }
 }

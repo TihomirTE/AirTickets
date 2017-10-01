@@ -16,3 +16,5 @@ E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data\obj\Debug\AirTickets
 E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data\obj\Debug\AirTickets.Data.csproj.CoreCompileInputs.cache
 E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data\obj\Debug\AirTickets.Data.dll
 E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data\obj\Debug\AirTickets.Data.pdb
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data\obj\Debug\AirTickets.Data.Migrations.Initial.resources
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Data\obj\Debug\AirTickets.Data.csproj.GenerateResource.Cache
