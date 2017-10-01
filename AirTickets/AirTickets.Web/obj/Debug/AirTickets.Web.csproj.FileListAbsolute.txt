@@ -123,3 +123,10 @@ E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\AirTickets.Data.M
 E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\AirTickets.Data.Model.dll.config
 E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\AirTickets.Data.pdb
 E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\AirTickets.Data.dll.config
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\Ninject.dll
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\Ninject.Web.Common.dll
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\Ninject.Web.Mvc.dll
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\WebActivatorEx.dll
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\Ninject.xml
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\Ninject.Web.Common.xml
+E:\Programming\GitHub\AirTickets\AirTickets\AirTickets.Web\bin\Ninject.Web.Mvc.xml
