@@ -11,6 +11,9 @@ namespace AirTickets.Web.App_Start
     using Ninject;
     using Ninject.Web.Common;
     using AirTickets.Data.Repositories;
+    using AirTickets.Data;
+    using System.Data.Entity;
+    using Ninject.Extensions.Conventions;
 
     public static class NinjectWebCommon 
     {
@@ -62,6 +65,14 @@ namespace AirTickets.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
+            kernel.Bind(x =>
+            {
+                x.FromThisAssembly()
+                 .SelectAllClasses()
+                 .BindDefaultInterface();
+            });
+
+            kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
         }        
     }
