@@ -61,6 +61,10 @@
     <Compile Include="Migrations\201710012004405_Update Ticket.Designer.cs">
       <DependentUpon>201710012004405_Update Ticket.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\201710020614172_Update ticket model.cs" />
+    <Compile Include="Migrations\201710020614172_Update ticket model.Designer.cs">
+      <DependentUpon>201710020614172_Update ticket model.cs</DependentUpon>
+    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -83,6 +87,9 @@
     </EmbeddedResource>
     <EmbeddedResource Include="Migrations\201710012004405_Update Ticket.resx">
       <DependentUpon>201710012004405_Update Ticket.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\201710020614172_Update ticket model.resx">
+      <DependentUpon>201710020614172_Update ticket model.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
