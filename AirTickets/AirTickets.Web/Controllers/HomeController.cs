@@ -23,16 +23,44 @@ namespace AirTickets.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "Your application description page.";
+            ViewBag.Message = "About";
 
             return View();
         }
 
+        [HttpGet]
         public ActionResult Contact()
         {
-            ViewBag.Message = "Your contact page.";
+            ViewBag.TheMessage = "Having trouble ? Send us a message.";
 
             return View();
+        }
+
+        [HttpPost]
+        public ActionResult Contact(string message)
+        {
+            // TODO: send message to adminastrator
+            if (message == string.Empty)
+            {
+                ViewBag.TheMessage = "Message can not be empty! Try again!";
+                return View();
+            }
+
+            ViewBag.TheMessage = "Message sent";
+
+            return View();
+        }
+
+        public ActionResult Serial(string letterCase)
+        {
+            var serial = "MVC 5 project";
+
+            if (letterCase == "lower")
+            {
+                return Content(serial.ToLower());
+            }
+
+            return RedirectToAction("Index");
         }
     }
 }
