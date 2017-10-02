@@ -14,6 +14,6 @@ namespace AirTickets.Data.Model
 
         public TravelClass TravelClass { get; set; }
 
-        public virtual User Customer { get; set; }
+        public virtual User User { get; set; }
     }
 }

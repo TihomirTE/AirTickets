@@ -61,7 +61,7 @@ namespace AirTickets.Data.Migrations
                     {
                         Price = 100 + i,
                         TravelClass = TravelClass.First,
-                        Customer = context.Users.First(x => x.Email == "pesho@thebest.com"),
+                        User = context.Users.First(x => x.Email == "pesho@thebest.com"),
                         CreatedOn = DateTime.Now
                     };
 
