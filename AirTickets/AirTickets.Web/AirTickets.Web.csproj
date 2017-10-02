@@ -299,6 +299,10 @@
       <Project>{23A92ECC-CB55-4FB2-B0B5-D70889AF4958}</Project>
       <Name>AirTickets.Data</Name>
     </ProjectReference>
+    <ProjectReference Include="..\AirTickets.Services\AirTickets.Services.csproj">
+      <Project>{A22E70CF-5F9B-4009-8950-D9FFE745157B}</Project>
+      <Name>AirTickets.Services</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <WCFMetadata Include="Connected Services\" />

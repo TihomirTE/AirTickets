@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AirTickets.Services.Contracts;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,6 +9,13 @@ namespace AirTickets.Web.Controllers
 {
     public class HomeController : Controller
     {
+        private readonly ITicketService ticketService;
+
+        public HomeController(ITicketService ticketService)
+        {
+            this.ticketService = ticketService;
+        }
+
         public ActionResult Index()
         {
             return View();

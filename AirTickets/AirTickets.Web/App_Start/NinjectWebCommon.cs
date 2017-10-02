@@ -14,6 +14,7 @@ namespace AirTickets.Web.App_Start
     using AirTickets.Data;
     using System.Data.Entity;
     using Ninject.Extensions.Conventions;
+    using AirTickets.Services.Contracts;
 
     public static class NinjectWebCommon 
     {
@@ -68,6 +69,13 @@ namespace AirTickets.Web.App_Start
             kernel.Bind(x =>
             {
                 x.FromThisAssembly()
+                 .SelectAllClasses()
+                 .BindDefaultInterface();
+            });
+
+            kernel.Bind(x =>
+            {
+                x.FromAssemblyContaining(typeof(IService))
                  .SelectAllClasses()
                  .BindDefaultInterface();
             });

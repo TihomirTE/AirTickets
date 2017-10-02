@@ -11,6 +11,10 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTickets.Data", "AirTicke
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTickets.Data.Model", "AirTickets.Data.Model\AirTickets.Data.Model.csproj", "{6B9FDA05-50A0-4E0A-83F1-57A91CF6C9B3}"
 EndProject
+Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{078E43C7-6654-4DCE-AD61-E907E52646B8}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTickets.Services", "AirTickets.Services\AirTickets.Services.csproj", "{A22E70CF-5F9B-4009-8950-D9FFE745157B}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -29,6 +33,10 @@ Global
 		{6B9FDA05-50A0-4E0A-83F1-57A91CF6C9B3}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{6B9FDA05-50A0-4E0A-83F1-57A91CF6C9B3}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{6B9FDA05-50A0-4E0A-83F1-57A91CF6C9B3}.Release|Any CPU.Build.0 = Release|Any CPU
+		{A22E70CF-5F9B-4009-8950-D9FFE745157B}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{A22E70CF-5F9B-4009-8950-D9FFE745157B}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{A22E70CF-5F9B-4009-8950-D9FFE745157B}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{A22E70CF-5F9B-4009-8950-D9FFE745157B}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -36,6 +44,7 @@ Global
 	GlobalSection(NestedProjects) = preSolution
 		{23A92ECC-CB55-4FB2-B0B5-D70889AF4958} = {E16B34CA-78F6-41A7-9AC1-519F82351F59}
 		{6B9FDA05-50A0-4E0A-83F1-57A91CF6C9B3} = {E16B34CA-78F6-41A7-9AC1-519F82351F59}
+		{A22E70CF-5F9B-4009-8950-D9FFE745157B} = {078E43C7-6654-4DCE-AD61-E907E52646B8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {00C0B8BA-DE89-42E7-ACEF-DDE02E304A23}
