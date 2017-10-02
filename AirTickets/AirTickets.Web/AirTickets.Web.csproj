@@ -284,6 +284,7 @@
     <Content Include="Views\Home\_Hotel.cshtml" />
     <Content Include="Views\Home\_CarHire.cshtml" />
     <Content Include="Views\ViewProfile\Details.cshtml" />
+    <Content Include="Views\Home\_MessageContact.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

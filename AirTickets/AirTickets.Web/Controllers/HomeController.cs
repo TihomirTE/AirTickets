@@ -43,12 +43,13 @@ namespace AirTickets.Web.Controllers
             if (message == string.Empty)
             {
                 ViewBag.TheMessage = "Message can not be empty! Try again!";
-                return View();
+
+                return PartialView("_MessageContact");
             }
 
             ViewBag.TheMessage = "Message sent";
 
-            return View();
+            return PartialView("_MessageContact");
         }
 
         public ActionResult Serial(string letterCase)
