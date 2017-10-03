@@ -6,7 +6,18 @@ using System.Threading.Tasks;
 
 namespace AirTickets.Data.SaveContext
 {
-    class SaveContext
+    public class SaveContext : ISaveContext
     {
+        private readonly MsSqlDbContext context;
+
+        public SaveContext(MsSqlDbContext context)
+        {
+            this.context = context;
+        }
+
+        public void Commit()
+        {
+            this.context.SaveChanges();
+        }
     }
 }

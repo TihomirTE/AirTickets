@@ -15,6 +15,8 @@ namespace AirTickets.Web.App_Start
     using System.Data.Entity;
     using Ninject.Extensions.Conventions;
     using AirTickets.Services.Contracts;
+    using AutoMapper;
+    using AirTickets.Data.SaveContext;
 
     public static class NinjectWebCommon 
     {
@@ -82,6 +84,8 @@ namespace AirTickets.Web.App_Start
 
             kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
+            kernel.Bind<ISaveContext>().To<SaveContext>();
+            kernel.Bind<IMapper>().To<Mapper>();
         }        
     }
 }
