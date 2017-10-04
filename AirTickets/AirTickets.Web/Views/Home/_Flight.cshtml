@@ -9,5 +9,6 @@
         <input type="text" class="form-control" placeholder="City" aria-describedby="basic-addon1">
     </div>
 
-    <button type="submit" class="btn btn-default">Search</button>
+    <input type="button" class="btn btn-default" value="Search" onclick="@("window.location.href='" + Url.Action("GetFlight", "Home") + "'");"/>
 </form>
+

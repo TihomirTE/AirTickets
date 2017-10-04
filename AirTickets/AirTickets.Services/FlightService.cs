@@ -9,18 +9,18 @@ using System.Threading.Tasks;
 
 namespace AirTickets.Services
 {
-    public class TicketService : ITicketService
+    public class FlightService : IFlightService
     {
-        private readonly IEfRepository<Ticket> ticketRepo;
+        private readonly IEfRepository<Flight> flightRepo;
 
-        public TicketService(IEfRepository<Ticket> ticketRepo)
+        public FlightService(IEfRepository<Flight> ticketRepo)
         {
-            this.ticketRepo = ticketRepo;
+            this.flightRepo = ticketRepo;
         }
 
-        public IQueryable<Ticket> GetAll()
+        public IQueryable<Flight> GetAll()
         {
-            return this.ticketRepo.All;
+            return this.flightRepo.All;
         }
     }
 }

@@ -3,8 +3,8 @@ using AirTickets.Data.Model;
 
 namespace AirTickets.Services.Contracts
 {
-    public interface ITicketService
+    public interface IFlightService
     {
-        IQueryable<Ticket> GetAll();
+        IQueryable<Flight> GetAll();
     }
 }

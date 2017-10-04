@@ -41,9 +41,9 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Contracts\IService.cs" />
-    <Compile Include="Contracts\ITicketService.cs" />
+    <Compile Include="Contracts\IFlightService.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="TicketService.cs" />
+    <Compile Include="FlightService.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\AirTickets.Data.Model\AirTickets.Data.Model.csproj">

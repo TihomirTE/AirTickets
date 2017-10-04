@@ -1,4 +1,6 @@
 ﻿using AirTickets.Services.Contracts;
+using AirTickets.Web.Models;
+using AutoMapper.QueryableExtensions;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,11 +11,11 @@ namespace AirTickets.Web.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly ITicketService ticketService;
+        private readonly IFlightService flightService;
 
-        public HomeController(ITicketService ticketService)
+        public HomeController(IFlightService ticketService)
         {
-            this.ticketService = ticketService;
+            this.flightService = ticketService;
         }
 
         public ActionResult Index()
@@ -62,6 +64,28 @@ namespace AirTickets.Web.Controllers
             }
 
             return RedirectToAction("Index");
+        }
+        [HttpGet]
+        public ActionResult GetFlight()
+        {
+            return this.View(new List<FlightViewModel>());
+            
+        }
+
+        [HttpPost]
+        public ActionResult GetFlight(decimal price)
+        {
+            // extract these things in Service
+
+            var flights = this.flightService
+                .GetAll()
+                .ProjectTo<FlightViewModel>()
+                .Where(x => x.Price > price)
+                .ToList();
+
+            //model.FoundFlights = flights;
+
+            return this.View(flights);
         }
     }
 }
