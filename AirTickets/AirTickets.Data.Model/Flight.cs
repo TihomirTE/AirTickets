@@ -8,12 +8,21 @@ using System.Threading.Tasks;
 
 namespace AirTickets.Data.Model
 {
-    public class Ticket : DataModel
+    public class Flight : DataModel
     {
         public decimal Price { get; set; }
 
         public TravelClass TravelClass { get; set; }
 
         public virtual User User { get; set; }
+
+        public virtual Airport DepartureAirport { get; set; }
+
+        public virtual Airport ArrivalAirport { get; set; }
+
+
+        public virtual Airline Airline { get; set; }
+
+
     }
 }

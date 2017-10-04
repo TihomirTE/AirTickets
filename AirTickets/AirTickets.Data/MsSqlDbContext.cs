@@ -17,7 +17,15 @@ namespace AirTickets.Data
         {
         }
 
-        public IDbSet<Ticket> Tickets { get; set; }
+        public virtual IDbSet<Flight> Tickets { get; set; }
+
+        public virtual IDbSet<Airline> Airlines { get; set; }
+
+        public virtual IDbSet<Airport> Airports { get; set; }
+
+        public virtual IDbSet<Country> Countries { get; set; }
+
+        public virtual IDbSet<City> Cities { get; set; }
 
         public override int SaveChanges()
         {
