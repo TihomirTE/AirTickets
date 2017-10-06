@@ -7,20 +7,51 @@ using System.Web;
 using AutoMapper;
 using AirTickets.Data.Model.Enum;
 using System.ComponentModel.DataAnnotations;
+using AirTickets.Services.Models;
 
 namespace AirTickets.Web.Models
 {
-    public class FlightViewModel: IMap<Flight> //ICustomMappings
+    public class FlightViewModel //IMap<Flight> //ICustomMappings
     {
-        [Display(Name ="Total sum = ")]
-        public decimal Price { get; set; }
+        public FlightViewModel()
+        {
 
-        //public void CreateMappings(IMapperConfigurationExpression configuration)
-        //{
+        }
+
+        public FlightViewModel(FlightModel flight)
+        {
+            if (flight != null)
+            {
+                //this.Id = flight.Id;
+                this.DepartureCity = flight.DepartureAirport;
+                this.ArrivalCity = flight.ArrivalAirport;
+                this.Price = flight.Price;
+                this.Airline = flight.Airline;
+                this.TravelClass = flight.TravelClass;
+            }
+        }
+
+        //public Guid Id { get; private set; }
+
+        public Airport DepartureCity { get; private set; }
+
+        public Airport ArrivalCity { get; private set; }
+
+        public decimal Price { get; private set; }
+
+        public Airline Airline { get; private set; }
+
+        public TravelClass TravelClass { get; private set; }
+
+        //[Display(Name ="Total sum = ")]
+        //public decimal Price { get; set; }
+
+        ////public void CreateMappings(IMapperConfigurationExpression configuration)
+        ////{
             
-        //}
+        ////}
 
-        public TravelClass TravelClass { get; set; }
+        //public TravelClass TravelClass { get; set; }
 
     }
 }

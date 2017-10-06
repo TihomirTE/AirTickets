@@ -42,6 +42,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="Contracts\IFlightService.cs" />
+    <Compile Include="Models\FlightModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="FlightService.cs" />
   </ItemGroup>

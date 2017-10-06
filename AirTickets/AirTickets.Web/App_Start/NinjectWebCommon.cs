@@ -17,21 +17,24 @@ namespace AirTickets.Web.App_Start
     using AirTickets.Services.Contracts;
     using AutoMapper;
     using AirTickets.Data.SaveContext;
+    using System.IO;
+    using System.Reflection;
+    using AirTickets.Services;
 
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -39,7 +42,7 @@ namespace AirTickets.Web.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -82,10 +85,21 @@ namespace AirTickets.Web.App_Start
                  .BindDefaultInterface();
             });
 
+          //  var codeBase = Assembly.GetExecutingAssembly().CodeBase;
+          //  var uri = new UriBuilder(codeBase);
+          //  var path = Uri.UnescapeDataString(uri.Path);
+
+          //  kernel.Bind(
+          //x =>
+          //    x.FromAssembliesInPath(Path.GetDirectoryName(path))
+          //        .SelectAllClasses()
+          //        .InheritedFrom(typeof(IMapper))
+          //        .BindAllInterfaces());
+
             kernel.Bind(typeof(DbContext), typeof(MsSqlDbContext)).To<MsSqlDbContext>().InRequestScope();
             kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
             kernel.Bind<ISaveContext>().To<SaveContext>();
             kernel.Bind<IMapper>().To<Mapper>();
-        }        
+        }
     }
 }

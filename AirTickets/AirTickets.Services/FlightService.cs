@@ -1,6 +1,7 @@
 ﻿using AirTickets.Data.Model;
 using AirTickets.Data.Repositories;
 using AirTickets.Services.Contracts;
+using AirTickets.Services.Models;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -13,14 +14,15 @@ namespace AirTickets.Services
     {
         private readonly IEfRepository<Flight> flightRepo;
 
-        public FlightService(IEfRepository<Flight> ticketRepo)
+        public FlightService(IEfRepository<Flight> flightRepo)
         {
-            this.flightRepo = ticketRepo;
+            this.flightRepo = flightRepo;
         }
 
-        public IQueryable<Flight> GetAll()
+        public IEnumerable<FlightModel> GetAll()
         {
-            return this.flightRepo.All;
+            return this.flightRepo.All.ToList().OrderBy(x => x.Price).AsQueryable()
+                .Select(FlightModel.Create).ToList();
         }
     }
 }

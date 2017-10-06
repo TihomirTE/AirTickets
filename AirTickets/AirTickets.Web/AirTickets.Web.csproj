@@ -210,7 +210,7 @@
     <Compile Include="App_Start\RouteConfig.cs" />
     <Compile Include="App_Start\Startup.Auth.cs" />
     <Compile Include="Controllers\AccountController.cs" />
-    <Compile Include="Controllers\FlightController.cs" />
+    <Compile Include="Controllers\Flight\FlightController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\ManageController.cs" />
     <Compile Include="Controllers\SearchController.cs" />
@@ -295,11 +295,14 @@
     <Content Include="Views\Home\_CarHire.cshtml" />
     <Content Include="Views\ViewProfile\Details.cshtml" />
     <Content Include="Views\Home\_MessageContact.cshtml" />
-    <Content Include="Views\Home\GetFlight.cshtml" />
+    <Content Include="Views\Flight\GetFlight.cshtml" />
+    <Content Include="Views\Flight\All.cshtml" />
+    <Content Include="Views\Flight\_AllFlights.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
-    <Folder Include="Views\Flight\" />
+    <Folder Include="Controllers\Hotel\" />
+    <Folder Include="Controllers\RentCar\" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="fonts\glyphicons-halflings-regular.woff" />

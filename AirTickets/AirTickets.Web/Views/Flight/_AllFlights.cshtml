@@ -1,0 +1,11 @@
+﻿@using AirTickets.Web.Models
+@model IEnumerable<FlightViewModel>
+
+<div class="panel">
+    @foreach (var flight in Model)
+    {
+        @Html.DisplayFor(x => flight)
+        
+    }
+</div>
+

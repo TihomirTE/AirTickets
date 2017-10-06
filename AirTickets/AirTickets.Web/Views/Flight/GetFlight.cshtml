@@ -12,7 +12,7 @@
 @using AirTickets.Web.Models
 @model IEnumerable<FlightViewModel>
 
-    @using (Html.BeginForm("GetFlight", "Home", FormMethod.Post))
+    @using (Html.BeginForm("GetFlight", "Flight", FormMethod.Post))
     {
         <input type="text" name="price" />
 
