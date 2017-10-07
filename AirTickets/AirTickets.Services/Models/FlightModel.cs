@@ -23,7 +23,7 @@ namespace AirTickets.Services.Models
                 this.DepartureAirport = flight.DepartureAirport;
                 this.ArrivalAirport = flight.ArrivalAirport;
                 this.Price = flight.Price;
-                this.Airline = flight.Airline;
+                //this.Airline = flight.Airline;
                 this.TravelClass = flight.TravelClass;
             }
         }
@@ -36,7 +36,7 @@ namespace AirTickets.Services.Models
 
         public decimal Price { get; private set; }
 
-        public Airline Airline { get; private set; }
+        public AirlineModel Airline { get; private set; }
 
         public TravelClass TravelClass { get; private set; }
 
@@ -50,7 +50,7 @@ namespace AirTickets.Services.Models
                     DepartureAirport = flight.DepartureAirport,
                     ArrivalAirport = flight.ArrivalAirport,
                     Price = flight.Price,
-                    Airline = flight.Airline,
+                    //Airline = flight.Airline,
                     TravelClass = flight.TravelClass
                 };
             }

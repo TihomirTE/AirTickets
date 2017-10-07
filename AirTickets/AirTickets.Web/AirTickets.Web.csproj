@@ -223,7 +223,8 @@
     <Compile Include="Infrastructure\QueryableExtensions.cs" />
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FlightSearchViewModel.cs" />
-    <Compile Include="Models\FlightViewModel.cs" />
+    <Compile Include="Models\Flight\AirlineViewModel.cs" />
+    <Compile Include="Models\Flight\FlightViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="Startup.cs" />

@@ -4,7 +4,6 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
-using AutoMapper;
 using AirTickets.Data.Model.Enum;
 using System.ComponentModel.DataAnnotations;
 using AirTickets.Services.Models;
@@ -22,7 +21,7 @@ namespace AirTickets.Web.Models
         {
             if (flight != null)
             {
-                //this.Id = flight.Id;
+                this.Id = flight.Id;
                 this.DepartureCity = flight.DepartureAirport;
                 this.ArrivalCity = flight.ArrivalAirport;
                 this.Price = flight.Price;
@@ -31,7 +30,7 @@ namespace AirTickets.Web.Models
             }
         }
 
-        //public Guid Id { get; private set; }
+        public Guid Id { get; private set; }
 
         public Airport DepartureCity { get; private set; }
 
@@ -39,7 +38,7 @@ namespace AirTickets.Web.Models
 
         public decimal Price { get; private set; }
 
-        public Airline Airline { get; private set; }
+        public AirlineModel Airline { get; private set; }
 
         public TravelClass TravelClass { get; private set; }
 

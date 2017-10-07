@@ -9,24 +9,24 @@ namespace AirTickets.Data.Model
 {
     public class Airline : DataModel
     {
-        private ICollection<Flight> tickets;
+        private ICollection<Flight> flights;
 
         public Airline()
         {
-            this.tickets = new HashSet<Flight>();
+            this.flights = new HashSet<Flight>();
         }
 
         public string Name { get; set; }
 
-        public virtual ICollection<Flight> Tickets
+        public virtual ICollection<Flight> Flights
         {
             get
             {
-                return this.tickets;
+                return this.flights;
             }
             set
             {
-                this.tickets = value;
+                this.flights = value;
             }
         }
     }
