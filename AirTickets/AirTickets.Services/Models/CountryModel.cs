@@ -20,7 +20,7 @@ namespace AirTickets.Services.Models
             {
                 this.Id = country.Id;
                 this.Name = country.Name;
-                this.Airports = country.Airports;
+                this.Airports = country.Airports.Select(x => new AirportModel(x)).ToList();
             }
         }
 
@@ -28,6 +28,6 @@ namespace AirTickets.Services.Models
 
         public string Name { get; set; }
 
-        public ICollection<Airport> Airports { get; set; }
+        public ICollection<AirportModel> Airports { get; set; }
     }
 }

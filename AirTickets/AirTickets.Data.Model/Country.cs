@@ -19,7 +19,7 @@ namespace AirTickets.Data.Model
         public string Name { get; set; }
 
 
-        public virtual ICollection<Airport> Cities
+        public virtual ICollection<Airport> Airports
         {
             get
             {
