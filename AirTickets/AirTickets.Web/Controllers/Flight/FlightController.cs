@@ -33,7 +33,7 @@ namespace AirTickets.Web.Controllers.Flight
         [HttpGet]
         public ActionResult AllFlights()
         {
-            var allFlight = this.flightService.GetAll()
+            var allFlight = this.flightService.GetAllFlights()
                 .Select(x => new FlightViewModel(x)).ToList();
 
             return this.PartialView("_AllFlights", allFlight);

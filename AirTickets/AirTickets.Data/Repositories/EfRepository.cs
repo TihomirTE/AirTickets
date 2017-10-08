@@ -10,10 +10,12 @@ namespace AirTickets.Data.Repositories
         where T : class, IDeletable
     {
         private readonly MsSqlDbContext context;
+        private readonly IDbSet<T> dbSet;
 
         public EfRepository(MsSqlDbContext context)
         {
             this.context = context;
+            this.dbSet = context.Set<T>();
         }
 
         public IQueryable<T> All
@@ -30,6 +32,11 @@ namespace AirTickets.Data.Repositories
             {
                 return this.context.Set<T>();
             }
+        }
+
+        public T GetById(Guid id)
+        {
+            return this.dbSet.Find(id);
         }
 
         public void Add(T entity)
@@ -54,6 +61,8 @@ namespace AirTickets.Data.Repositories
             var entry = this.context.Entry(entity);
             entry.State = EntityState.Modified;
         }
+
+        
 
         public void Update(T entity)
         {
