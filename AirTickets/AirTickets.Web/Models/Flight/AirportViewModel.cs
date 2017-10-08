@@ -15,10 +15,13 @@ namespace AirTickets.Web.Models.Flight
 
         public AirportViewModel(AirportModel airport)
         {
-            this.Id = airport.Id;
-            this.Name = airport.Name;
-            this.AirportCode = airport.AirportCode;
-            this.Flights = airport.Flights.Select(x => new FlightViewModel(x)).ToList();
+            if (airport != null)
+            {
+                this.Id = airport.Id;
+                this.Name = airport.Name;
+                this.AirportCode = airport.AirportCode;
+                this.Flights = airport.Flights.Select(x => new FlightViewModel(x)).ToList();
+            }
         }
 
         public Guid Id { get; set; }

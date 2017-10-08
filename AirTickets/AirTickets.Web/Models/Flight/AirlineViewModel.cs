@@ -15,9 +15,12 @@ namespace AirTickets.Web.Models.Flight
 
         public AirlineViewModel(AirlineModel airline)
         {
-            this.Id = airline.Id;
-            this.Name = airline.Name;
-            this.Flights = airline.Flights.Select(x => new FlightViewModel(x)).ToList();
+            if (airline != null)
+            {
+                this.Id = airline.Id;
+                this.Name = airline.Name;
+                this.Flights = airline.Flights.Select(x => new FlightViewModel(x)).ToList();
+            }
         }
 
         public Guid Id { get; set; }
