@@ -1,6 +1,7 @@
 ﻿using AirTickets.Data.Model;
 using AirTickets.Data.Repositories;
 using AirTickets.Data.SaveContext;
+using AirTickets.Services.Contracts;
 using AirTickets.Services.Models;
 using Bytes2you.Validation;
 using System;
@@ -11,7 +12,7 @@ using System.Threading.Tasks;
 
 namespace AirTickets.Services
 {
-    public class DestinationService
+    public class DestinationService : IDestinationService
     {
         private readonly IEfRepository<Airport> destinationRepo;
         private readonly ISaveContext saveContext;
