@@ -20,7 +20,7 @@ namespace AirTickets.Data.Model
 
         public string AirportCode { get; set; }
 
-        public virtual City City { get; set; }
+        public virtual Country Country { get; set; }
 
         public virtual ICollection<Flight> Flights
         {

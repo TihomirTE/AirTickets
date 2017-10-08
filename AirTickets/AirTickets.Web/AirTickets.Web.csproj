@@ -224,6 +224,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FlightSearchViewModel.cs" />
     <Compile Include="Models\Flight\AirlineViewModel.cs" />
+    <Compile Include="Models\Flight\AirportViewModel.cs" />
     <Compile Include="Models\Flight\FlightViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

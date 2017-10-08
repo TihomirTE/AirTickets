@@ -83,14 +83,6 @@ namespace AirTickets.Data.Migrations
                         Name = "BritishAir" + i,
                         
                     };
-                    context.Airlines.Add(airline);
-
-                    var city = new City()
-                    {
-                        Name = "London" + i,
-
-                    };
-                    context.Cities.Add(city);
 
                     var country = new Country()
                     {

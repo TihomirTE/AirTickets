@@ -25,8 +25,6 @@ namespace AirTickets.Data
 
         public virtual IDbSet<Country> Countries { get; set; }
 
-        public virtual IDbSet<City> Cities { get; set; }
-
         public override int SaveChanges()
         {
             this.ApplyAuditInfoRules();
