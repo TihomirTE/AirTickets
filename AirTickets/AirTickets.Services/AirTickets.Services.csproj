@@ -46,6 +46,7 @@
   <ItemGroup>
     <Compile Include="Contracts\IService.cs" />
     <Compile Include="Contracts\IFlightService.cs" />
+    <Compile Include="DestinationService.cs" />
     <Compile Include="Models\AirlineModel.cs" />
     <Compile Include="Models\AirportModel.cs" />
     <Compile Include="Models\CountryModel.cs" />

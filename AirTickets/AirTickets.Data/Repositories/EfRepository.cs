@@ -4,6 +4,7 @@ using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
 using System.Linq;
+using System.Linq.Expressions;
 
 namespace AirTickets.Data.Repositories
 {
@@ -35,6 +36,11 @@ namespace AirTickets.Data.Repositories
             {
                 return this.context.Set<T>();
             }
+        }
+
+        public IQueryable<T> AllWithInclude<TProperty>(Expression<Func<T, TProperty>> includeExpression)
+        {
+            return this.All.Include(includeExpression);
         }
 
         public T GetById(Guid id)
