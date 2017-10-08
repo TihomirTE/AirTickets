@@ -39,10 +39,24 @@ namespace AirTickets.Services
             return result;
         }
 
-        public IEnumerable<FlightModel> GetAll()
+        public IEnumerable<FlightModel> GetAllFlights()
         {
             return this.flightRepo.All.ToList().OrderBy(x => x.Price).AsQueryable()
                 .Select(FlightModel.Create).ToList();
+        }
+
+        public IEnumerable<FlightModel> GetFlightsByPrice(int price)
+        {
+            var flight = new Flight();
+            IEnumerable<FlightModel> result = new List<FlightModel>();
+
+            if (price > 0)
+            {
+                result = this.flightRepo.All.Where(x => x.Price <= price).AsQueryable()
+                    .Select(FlightModel.Create).ToList();
+            }
+
+            return result;
         }
     }
 }

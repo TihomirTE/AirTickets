@@ -7,6 +7,6 @@ namespace AirTickets.Services.Contracts
 {
     public interface IFlightService
     {
-        IEnumerable<FlightModel> GetAll();
+        IEnumerable<FlightModel> GetAllFlights();
     }
 }
