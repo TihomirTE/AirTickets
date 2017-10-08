@@ -1,4 +1,5 @@
 ﻿using AirTickets.Data.Model.Contracts;
+using Bytes2you.Validation;
 using System;
 using System.Data.Entity;
 using System.Data.Entity.Infrastructure;
@@ -14,6 +15,8 @@ namespace AirTickets.Data.Repositories
 
         public EfRepository(MsSqlDbContext context)
         {
+            Guard.WhenArgument(context, "context").IsNull().Throw();
+
             this.context = context;
             this.dbSet = context.Set<T>();
         }

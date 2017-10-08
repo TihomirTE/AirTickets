@@ -8,6 +8,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using Bytes2you.Validation;
 
 namespace AirTickets.Web.Controllers.Flight
 {
@@ -18,6 +19,8 @@ namespace AirTickets.Web.Controllers.Flight
 
         public FlightController(IFlightService flightService)
         {
+            Guard.WhenArgument(flightService, "flightService").IsNull().Throw();
+
             this.flightService = flightService;
             //this.mapper = mapper;
         }

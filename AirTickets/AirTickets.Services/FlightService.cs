@@ -3,6 +3,7 @@ using AirTickets.Data.Repositories;
 using AirTickets.Data.SaveContext;
 using AirTickets.Services.Contracts;
 using AirTickets.Services.Models;
+using Bytes2you.Validation;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,9 @@ namespace AirTickets.Services
 
         public FlightService(IEfRepository<Flight> flightRepo, ISaveContext saveContext)
         {
+            Guard.WhenArgument(flightRepo, "flightRepo").IsNull().Throw();
+            Guard.WhenArgument(saveContext, "saveContext").IsNull().Throw();
+
             this.flightRepo = flightRepo;
             this.saveContext = saveContext;
         }
