@@ -18,8 +18,8 @@ namespace AirTickets.Data.Migrations
         {
             // to have control in what is happening in the database -> false
             // update database when we want manually
-            this.AutomaticMigrationsEnabled = false;
-            this.AutomaticMigrationDataLossAllowed = false;
+            this.AutomaticMigrationsEnabled = true;
+            this.AutomaticMigrationDataLossAllowed = true;
         }
 
         protected override void Seed(MsSqlDbContext context)
@@ -60,7 +60,7 @@ namespace AirTickets.Data.Migrations
         {
             if (!context.Tickets.Any())
             {
-                for (int i = 0; i < 2; i++)
+                for (int i = 0; i < 5; i++)
                 {
                     var ticket = new Flight()
                     {

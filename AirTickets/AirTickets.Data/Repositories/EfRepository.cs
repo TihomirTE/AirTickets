@@ -20,7 +20,7 @@ namespace AirTickets.Data.Repositories
         {
             get
             {
-                return this.context.Set<T>().Where(x => !x.IsDeleted);
+                return this.context.Set<T>();
             }
         }
 
