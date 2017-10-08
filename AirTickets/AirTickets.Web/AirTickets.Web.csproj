@@ -225,6 +225,7 @@
     <Compile Include="Models\FlightSearchViewModel.cs" />
     <Compile Include="Models\Flight\AirlineViewModel.cs" />
     <Compile Include="Models\Flight\AirportViewModel.cs" />
+    <Compile Include="Models\Flight\CountryViewModel.cs" />
     <Compile Include="Models\Flight\FlightViewModel.cs" />
     <Compile Include="Models\ManageViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
