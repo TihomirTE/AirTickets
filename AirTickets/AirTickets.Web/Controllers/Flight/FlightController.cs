@@ -15,14 +15,26 @@ namespace AirTickets.Web.Controllers.Flight
     public class FlightController : Controller
     {
         private readonly IFlightService flightService;
+        private readonly IDestinationService destinationService;
         //private readonly IMapper mapper;
 
-        public FlightController(IFlightService flightService)
+        public FlightController(IFlightService flightService, IDestinationService destinationService)
         {
             Guard.WhenArgument(flightService, "flightService").IsNull().Throw();
+            Guard.WhenArgument(destinationService, "destinationService").IsNull().Throw();
 
             this.flightService = flightService;
+            this.destinationService = destinationService;
             //this.mapper = mapper;
+        }
+
+        public ActionResult Details(Guid? id)
+        {
+            FlightModel flight = this.flightService.GetById(id);
+
+            FlightViewModel viewModel = new FlightViewModel(flight);
+
+            return this.View(viewModel);
         }
 
         [HttpGet]
