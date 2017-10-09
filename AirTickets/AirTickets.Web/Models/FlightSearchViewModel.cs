@@ -1,4 +1,5 @@
-﻿using System;
+﻿using AirTickets.Web.Models.Flight;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;

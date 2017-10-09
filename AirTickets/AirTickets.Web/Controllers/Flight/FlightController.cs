@@ -9,6 +9,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 using Bytes2you.Validation;
+using AirTickets.Web.Models.Flight;
 
 namespace AirTickets.Web.Controllers.Flight
 {
@@ -54,12 +55,28 @@ namespace AirTickets.Web.Controllers.Flight
             return this.PartialView("_AllFlights", allFlight);
         }
 
-        [HttpGet]
-        public ActionResult GetFlight()
+        public ActionResult FilterFlights(int searchTerm)
         {
-            return this.View(new List<FlightViewModel>());
+            if (searchTerm <= 0)
+            {
+                return this.AllFlights();
+            }
+            else
+            {
+                var filterFlights = this.flightService.GetFlightsByPrice(searchTerm)
+                    .Select(b => new FlightViewModel(b))
+                    .ToList();
 
+                return this.PartialView("_FilterFlightsPartial", filterFlights);
+            }
         }
+
+        //[HttpGet]
+        //public ActionResult GetFlight()
+        //{
+        //    return this.View(new List<FlightViewModel>());
+
+        //}
 
         [HttpPost]
         public ActionResult Price(decimal price)

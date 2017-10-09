@@ -1,4 +1,27 @@
-﻿
-<div class="panel">
+﻿<div class="panel">
+    @using (Ajax.BeginForm("FilterFlights", new { }, new AjaxOptions()
+    {
+        HttpMethod = "Post",
+        UpdateTargetId = "flightPanel",
+        InsertionMode = InsertionMode.Replace,
+    }, new { id = "ajaxForm" }))
+    {
+        <input type="text" name="searchTerm" />
+    }
+</div>
+
+
+<div id="flightPanel" class="panel">
     @Html.Action("AllFlights")
 </div>
+
+
+@section scripts {
+    <script>
+        $(function () {
+            $('[name="searchTerm"]').keyup(function () {
+                $('#ajaxForm').submit()
+            })
+        })
+    </script>
+}

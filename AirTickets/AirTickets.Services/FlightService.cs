@@ -56,7 +56,10 @@ namespace AirTickets.Services
 
             if (price > 0)
             {
-                result = this.flightRepo.All.Where(x => x.Price <= price).AsQueryable()
+                result = this.flightRepo.All
+                    .OrderBy(x => x.Price)
+                    .Where(x => x.Price <= price)
+                    .AsQueryable()
                     .Select(FlightModel.Create).ToList();
             }
 

@@ -8,7 +8,7 @@ using AirTickets.Data.Model.Enum;
 using System.ComponentModel.DataAnnotations;
 using AirTickets.Services.Models;
 
-namespace AirTickets.Web.Models
+namespace AirTickets.Web.Models.Flight
 {
     public class FlightViewModel //IMap<Flight> //ICustomMappings
     {
