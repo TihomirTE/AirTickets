@@ -18,7 +18,7 @@ namespace AirTickets.Data.Model
 
         public virtual User User { get; set; }
 
-        public Guid AirlineId { get; set; }
+        public Guid? AirlineId { get; set; }
 
         public virtual Airline Airline { get; set; }
     }

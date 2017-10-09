@@ -9,7 +9,7 @@ namespace AirTickets.Data.Model
 {
     public class Airline : DataModel
     {
-        private ICollection<Flight> flights;
+        private IEnumerable<Flight> flights;
 
         public Airline()
         {
@@ -18,11 +18,11 @@ namespace AirTickets.Data.Model
 
         public string Name { get; set; }
 
-        public Guid ArrivalAirportId { get; set; }
+        public Guid? ArrivalAirportId { get; set; }
 
         public virtual ArrivalAirport ArrivalAirport { get; set; }
 
-        public virtual ICollection<Flight> Flights
+        public virtual IEnumerable<Flight> Flights
         {
             get
             {
