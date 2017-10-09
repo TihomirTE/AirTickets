@@ -57,30 +57,6 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Migrations\201710011645172_Initial.cs" />
-    <Compile Include="Migrations\201710011645172_Initial.Designer.cs">
-      <DependentUpon>201710011645172_Initial.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710012004405_Update Ticket.cs" />
-    <Compile Include="Migrations\201710012004405_Update Ticket.Designer.cs">
-      <DependentUpon>201710012004405_Update Ticket.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710020614172_Update ticket model.cs" />
-    <Compile Include="Migrations\201710020614172_Update ticket model.Designer.cs">
-      <DependentUpon>201710020614172_Update ticket model.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710031210374_Fix models.cs" />
-    <Compile Include="Migrations\201710031210374_Fix models.Designer.cs">
-      <DependentUpon>201710031210374_Fix models.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710041006069_Add models.cs" />
-    <Compile Include="Migrations\201710041006069_Add models.Designer.cs">
-      <DependentUpon>201710041006069_Add models.cs</DependentUpon>
-    </Compile>
-    <Compile Include="Migrations\201710041431189_Rename Ticket model to Flight model.cs" />
-    <Compile Include="Migrations\201710041431189_Rename Ticket model to Flight model.Designer.cs">
-      <DependentUpon>201710041431189_Rename Ticket model to Flight model.cs</DependentUpon>
-    </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="MsSqlDbContext.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -98,26 +74,6 @@
       <Project>{6B9FDA05-50A0-4E0A-83F1-57A91CF6C9B3}</Project>
       <Name>AirTickets.Data.Model</Name>
     </ProjectReference>
-  </ItemGroup>
-  <ItemGroup>
-    <EmbeddedResource Include="Migrations\201710011645172_Initial.resx">
-      <DependentUpon>201710011645172_Initial.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710012004405_Update Ticket.resx">
-      <DependentUpon>201710012004405_Update Ticket.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710020614172_Update ticket model.resx">
-      <DependentUpon>201710020614172_Update ticket model.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710031210374_Fix models.resx">
-      <DependentUpon>201710031210374_Fix models.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710041006069_Add models.resx">
-      <DependentUpon>201710041006069_Add models.cs</DependentUpon>
-    </EmbeddedResource>
-    <EmbeddedResource Include="Migrations\201710041431189_Rename Ticket model to Flight model.resx">
-      <DependentUpon>201710041431189_Rename Ticket model to Flight model.cs</DependentUpon>
-    </EmbeddedResource>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

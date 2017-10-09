@@ -49,10 +49,13 @@ namespace AirTickets.Web.Controllers.Flight
         [HttpGet]
         public ActionResult AllFlights()
         {
-            var allFlight = this.flightService.GetAllFlights()
-                .Select(x => new FlightViewModel(x)).ToList();
+            //var allFlight = this.flightService.GetAllFlights()
+            //    .Select(x => new FlightViewModel(x)).ToList();
 
-            return this.PartialView("_AllFlights", allFlight);
+            var allDestination = this.destinationService.GetAllAirportsWithFlightsIncluded()
+                        .Select(x => new DepartureAirportViewModel(x)).ToList();
+
+            return this.PartialView("_AllFlights", allDestination);
         }
 
         public ActionResult FilterFlights(int searchTerm)

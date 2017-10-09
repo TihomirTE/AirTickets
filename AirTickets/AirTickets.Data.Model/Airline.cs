@@ -18,6 +18,10 @@ namespace AirTickets.Data.Model
 
         public string Name { get; set; }
 
+        public Guid ArrivalAirportId { get; set; }
+
+        public virtual ArrivalAirport ArrivalAirport { get; set; }
+
         public virtual ICollection<Flight> Flights
         {
             get

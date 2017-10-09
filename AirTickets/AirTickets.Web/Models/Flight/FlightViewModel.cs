@@ -21,20 +21,20 @@ namespace AirTickets.Web.Models.Flight
         {
             if (flight != null)
             {
-                this.Id = flight.Id;
-                this.DepartureCity = flight.DepartureAirport;
-                this.ArrivalCity = flight.ArrivalAirport;
+            //    this.Id = flight.Id;
+            //    this.DepartureCity = flight.DepartureAirport;
+            //    this.ArrivalCity = flight.ArrivalAirport;
                 this.Price = flight.Price;
                 this.Airline = flight.Airline;
                 this.TravelClass = flight.TravelClass;
             }
         }
 
-        public Guid Id { get; private set; }
+        //public Guid Id { get; private set; }
 
-        public Airport DepartureCity { get; private set; }
+        //public DepartureAirport DepartureCity { get; private set; }
 
-        public Airport ArrivalCity { get; private set; }
+        //public DepartureAirport ArrivalCity { get; private set; }
 
         public decimal Price { get; private set; }
 

@@ -9,26 +9,26 @@ namespace AirTickets.Data.Model
 {
     public class Country : DataModel
     {
-        private ICollection<Airport> airports;
+        //private ICollection<DepartureAirport> airports;
 
         public Country()
         {
-            this.airports = new HashSet<Airport>();
+            //this.airports = new HashSet<DepartureAirport>();
         }
 
         public string Name { get; set; }
 
 
-        public virtual ICollection<Airport> Airports
-        {
-            get
-            {
-                return this.airports;
-            }
-            set
-            {
-                this.airports = value;
-            }
-        }
+        //public virtual ICollection<DepartureAirport> Airports
+        //{
+        //    get
+        //    {
+        //        return this.airports;
+        //    }
+        //    set
+        //    {
+        //        this.airports = value;
+        //    }
+        //}
     }
 }

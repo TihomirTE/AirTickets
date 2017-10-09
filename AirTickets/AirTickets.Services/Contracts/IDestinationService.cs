@@ -6,10 +6,10 @@ namespace AirTickets.Services.Contracts
 {
     public interface IDestinationService
     {
-        IEnumerable<AirportModel> GetAllAirportSortedAlphabetically();
+        IEnumerable<DepartureAirportModel> GetAllAirportSortedAlphabetically();
 
-        IEnumerable<AirportModel> GetAllAirportsWithFlightsIncluded();
+        IEnumerable<DepartureAirportModel> GetAllAirportsWithFlightsIncluded();
 
-        AirportModel GetById(Guid id);
+        //ArrivalAirportModel GetById(Guid id);
     }
 }

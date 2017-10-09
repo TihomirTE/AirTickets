@@ -18,16 +18,16 @@ namespace AirTickets.Services.Models
         {
             if (country != null)
             {
-                this.Id = country.Id;
+                //this.Id = country.Id;
                 this.Name = country.Name;
-                this.Airports = country.Airports.Select(x => new AirportModel(x)).ToList();
+                //this.Airports = country.Airports.Select(x => new ArrivalAirportModel(x)).ToList();
             }
         }
 
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
 
         public string Name { get; set; }
 
-        public ICollection<AirportModel> Airports { get; set; }
+        //public ICollection<ArrivalAirportModel> Airports { get; set; }
     }
 }

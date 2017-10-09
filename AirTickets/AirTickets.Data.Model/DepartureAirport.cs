@@ -7,30 +7,28 @@ using System.Threading.Tasks;
 
 namespace AirTickets.Data.Model
 {
-    public class Airport : DataModel
+    public class DepartureAirport : DataModel
     {
-        private ICollection<Flight> flights;
+        private ICollection<ArrivalAirport> arrivalAirport;
 
-        public Airport()
+        public DepartureAirport()
         {
-            this.flights = new HashSet<Flight>();
+            this.arrivalAirport = new HashSet<ArrivalAirport>();
         }
 
         public string Name { get; set; }
 
         public string AirportCode { get; set; }
 
-        public virtual Country Country { get; set; }
-
-        public virtual ICollection<Flight> Flights
+        public virtual ICollection<ArrivalAirport> ArrivalAirports
         {
             get
             {
-                return this.flights;
+                return this.arrivalAirport;
             }
             set
             {
-                this.flights = value;
+                this.arrivalAirport = value;
             }
         }
     }

@@ -6,30 +6,30 @@ using System.Web;
 
 namespace AirTickets.Web.Models.Flight
 {
-    public class AirportViewModel
+    public class ArrivalAirportViewModel
     {
-        public AirportViewModel()
+        public ArrivalAirportViewModel()
         {
 
         }
 
-        public AirportViewModel(AirportModel airport)
+        public ArrivalAirportViewModel(ArrivalAirportModel airport)
         {
             if (airport != null)
             {
-                this.Id = airport.Id;
+                //this.Id = airport.Id;
                 this.Name = airport.Name;
                 this.AirportCode = airport.AirportCode;
-                this.Flights = airport.Flights.Select(x => new FlightViewModel(x)).ToList();
+                this.Airlines = airport.Airlines.Select(x => new AirlineViewModel(x)).ToList();
             }
         }
 
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
 
         public string Name { get; set; }
 
         public string AirportCode { get; set; }
 
-        public IEnumerable<FlightViewModel> Flights { get; set; }
+        public IEnumerable<AirlineViewModel> Airlines { get; set; }
     }
 }

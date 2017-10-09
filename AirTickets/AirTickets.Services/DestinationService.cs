@@ -14,10 +14,10 @@ namespace AirTickets.Services
 {
     public class DestinationService : IDestinationService
     {
-        private readonly IEfRepository<Airport> destinationRepo;
+        private readonly IEfRepository<DepartureAirport> destinationRepo;
         private readonly ISaveContext saveContext;
 
-        public DestinationService(IEfRepository<Airport> destinationRepo, ISaveContext saveContext)
+        public DestinationService(IEfRepository<DepartureAirport> destinationRepo, ISaveContext saveContext)
         {
             Guard.WhenArgument(destinationRepo, "destinationRepo").IsNull().Throw();
             Guard.WhenArgument(saveContext, "saveContext").IsNull().Throw();
@@ -26,24 +26,24 @@ namespace AirTickets.Services
             this.saveContext = saveContext;
         }
 
-        public AirportModel GetById(Guid id)
-        {
-            return new AirportModel(this.destinationRepo.GetById(id));
-        }
+        //public ArrivalAirportModel GetById(Guid id)
+        //{
+        //    return new ArrivalAirportModel(this.destinationRepo.GetById(id));
+        //}
 
-        public IEnumerable<AirportModel> GetAllAirportSortedAlphabetically()
+        public IEnumerable<DepartureAirportModel> GetAllAirportSortedAlphabetically()
         {
             return this.destinationRepo.All.ToList()
                 .OrderBy(x => x.Name)
                 .AsQueryable()
-                .Select(AirportModel.Create)
+                .Select(DepartureAirportModel.Create)
                 .ToList();
         }
 
-        public IEnumerable<AirportModel> GetAllAirportsWithFlightsIncluded()
+        public IEnumerable<DepartureAirportModel> GetAllAirportsWithFlightsIncluded()
         {
-            return this.destinationRepo.AllWithInclude(x => x.Flights)
-                .Select(AirportModel.Create)
+            return this.destinationRepo.AllWithInclude(x => x.ArrivalAirports)
+                .Select(DepartureAirportModel.Create)
                 .ToList();
         }
     }

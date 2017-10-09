@@ -12,17 +12,14 @@ namespace AirTickets.Data.Model
     {
         public decimal Price { get; set; }
 
+        public TimeSpan Duration { get; set; }
+
         public TravelClass TravelClass { get; set; }
 
         public virtual User User { get; set; }
 
-        public virtual Airport DepartureAirport { get; set; }
-
-        public virtual Airport ArrivalAirport { get; set; }
-
+        public Guid AirlineId { get; set; }
 
         public virtual Airline Airline { get; set; }
-
-
     }
 }

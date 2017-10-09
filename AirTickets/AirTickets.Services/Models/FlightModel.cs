@@ -19,26 +19,35 @@ namespace AirTickets.Services.Models
         {
             if (flight != null)
             {
-                this.Id = flight.Id;
-                this.DepartureAirport = flight.DepartureAirport;
-                this.ArrivalAirport = flight.ArrivalAirport;
+                //this.Id = flight.Id;
+                
                 this.Price = flight.Price;
-                //this.Airline = flight.Airline;
+                this.Duration = flight.Duration;
                 this.TravelClass = flight.TravelClass;
+                if (flight.Airline != null)
+                {
+                    this.AirlineId = flight.Airline.Id;
+                }
+
             }
         }
 
-        public Guid Id { get; private set; }
+        //public Guid Id { get; private set; }
 
-        public Airport DepartureAirport { get; private set; }
+        //public DepartureAirport DepartureAirport { get; private set; }
 
-        public Airport ArrivalAirport { get; private set; }
+        //public DepartureAirport ArrivalAirport { get; private set; }
 
-        public decimal Price { get; private set; }
+        public decimal Price { get; set; }
 
-        public AirlineModel Airline { get; private set; }
+        public TimeSpan Duration { get; set; }
 
-        public TravelClass TravelClass { get; private set; }
+        public TravelClass TravelClass { get; set; }
+
+        public Guid AirlineId { get; set; }
+
+        public AirlineModel Airline { get; set; }
+
 
         public static Expression<Func<Flight, FlightModel>> Create
         {
@@ -46,12 +55,14 @@ namespace AirTickets.Services.Models
             {
                 return flight => new FlightModel()
                 {
-                    Id = flight.Id,
-                    DepartureAirport = flight.DepartureAirport,
-                    ArrivalAirport = flight.ArrivalAirport,
+                    //Id = flight.Id,
+                    //DepartureAirport = flight.DepartureAirport,
+                    //ArrivalAirport = flight.ArrivalAirport,
                     Price = flight.Price,
                     //Airline = flight.Airline,
-                    TravelClass = flight.TravelClass
+                    TravelClass = flight.TravelClass,
+                    Duration = flight.Duration,
+
                 };
             }
         }

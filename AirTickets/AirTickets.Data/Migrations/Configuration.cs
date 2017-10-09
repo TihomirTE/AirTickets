@@ -18,8 +18,8 @@ namespace AirTickets.Data.Migrations
         {
             // to have control in what is happening in the database -> false
             // update database when we want manually
-            this.AutomaticMigrationsEnabled = true;
-            this.AutomaticMigrationDataLossAllowed = true;
+            this.AutomaticMigrationsEnabled = false;
+            this.AutomaticMigrationDataLossAllowed = false;
         }
 
         protected override void Seed(MsSqlDbContext context)
@@ -58,40 +58,40 @@ namespace AirTickets.Data.Migrations
 
         private void SeedSimpleData(MsSqlDbContext context)
         {
-            if (!context.Tickets.Any())
-            {
-                for (int i = 0; i < 5; i++)
-                {
-                    var ticket = new Flight()
-                    {
-                        Price = 100 + i,
-                        TravelClass = TravelClass.Economy,
-                        //User = context.Users.First(x => x.Email == "pesho@thebest.com"),
-                        CreatedOn = DateTime.Now
-                    };
-                    context.Tickets.Add(ticket);
+            //if (!context.Tickets.Any())
+            //{
+            //    for (int i = 0; i < 5; i++)
+            //    {
+            //        var ticket = new Flight()
+            //        {
+            //            Price = 100 + i,
+            //            TravelClass = TravelClass.Economy,
+            //            //User = context.Users.First(x => x.Email == "pesho@thebest.com"),
+            //            CreatedOn = DateTime.Now
+            //        };
+            //        context.Tickets.Add(ticket);
 
-                    var airport = new Airport()
-                    {
-                        Name = "London" + i,
-                        AirportCode = "EBLN" + i
-                    };
-                    context.Airports.Add(airport);
+            //        var airport = new DepartureAirport()
+            //        {
+            //            Name = "London" + i,
+            //            AirportCode = "EBLN" + i
+            //        };
+            //        context.Airports.Add(airport);
 
-                    var airline = new Airline()
-                    {
-                        Name = "BritishAir" + i,
+            //        var airline = new Airline()
+            //        {
+            //            Name = "BritishAir" + i,
                         
-                    };
+            //        };
 
-                    var country = new Country()
-                    {
-                        Name = "UK" + i,
+            //        var country = new Country()
+            //        {
+            //            Name = "UK" + i,
 
-                    };
-                    context.Countries.Add(country);
-                }
-            }
+            //        };
+            //        context.Countries.Add(country);
+            //    }
+            //}
         }
     }
 }

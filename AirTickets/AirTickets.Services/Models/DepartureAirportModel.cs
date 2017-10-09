@@ -8,42 +8,42 @@ using System.Threading.Tasks;
 
 namespace AirTickets.Services.Models
 {
-    public class AirportModel
+    public class DepartureAirportModel
     {
-        public AirportModel()
+        public DepartureAirportModel()
         {
 
         }
 
-        public AirportModel(Airport airport)
+        public DepartureAirportModel(DepartureAirport airport)
         {
             if (airport != null)
             {
-                this.Id = airport.Id;
+                //this.Id = airport.Id;
                 this.Name = airport.Name;
                 this.AirportCode = airport.AirportCode;
-                this.Flights = airport.Flights.Select(x => new FlightModel(x)).ToList();
+                this.ArrivalAirports = airport.ArrivalAirports.Select(x => new ArrivalAirportModel(x)).ToList();
             }
         }
 
-        public Guid Id { get; set; }
+        //public Guid Id { get; set; }
 
         public string Name { get; set; }
 
         public string AirportCode { get; set; }
 
-        public IEnumerable<FlightModel> Flights { get; set; }
+        public IEnumerable<ArrivalAirportModel> ArrivalAirports { get; set; }
 
-        public static Expression<Func<Airport, AirportModel>> Create
+        public static Expression<Func<DepartureAirport, DepartureAirportModel>> Create
         {
             get
             {
-                return airport => new AirportModel()
+                return airport => new DepartureAirportModel()
                 {
-                    Id = airport.Id,
+                    //Id = airport.Id,
                     Name = airport.Name,
                     AirportCode = airport.AirportCode,
-                    Flights = airport.Flights.AsQueryable().Select(FlightModel.Create).ToList()
+                    ArrivalAirports = airport.ArrivalAirports.AsQueryable().Select(ArrivalAirportModel.Create).ToList()
                 };
             }
         }
