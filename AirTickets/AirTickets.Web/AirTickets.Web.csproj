@@ -305,6 +305,7 @@
     <Content Include="Views\Flight\GetFlight.cshtml" />
     <Content Include="Views\Flight\All.cshtml" />
     <Content Include="Views\Flight\_AllFlights.cshtml" />
+    <Content Include="Views\Flight\Details.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
