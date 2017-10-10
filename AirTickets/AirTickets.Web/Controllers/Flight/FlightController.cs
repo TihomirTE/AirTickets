@@ -52,7 +52,7 @@ namespace AirTickets.Web.Controllers.Flight
             //var allFlight = this.flightService.GetAllFlights()
             //    .Select(x => new FlightViewModel(x)).ToList();
 
-            var allDestination = this.destinationService.GetAllFlightsWithDestinationIncluded()
+            var allDestination = this.destinationService.GetAllAirportSortedAlphabetically()
                         .Select(x => new DepartureAirportViewModel(x))
                         .ToList();
 
@@ -75,36 +75,14 @@ namespace AirTickets.Web.Controllers.Flight
             }
         }
 
-        //[HttpGet]
-        //public ActionResult GetFlight()
-        //{
-        //    return this.View(new List<FlightViewModel>());
-
-        //}
-
-        [HttpPost]
-        public ActionResult Price(decimal price)
+        public ActionResult FilterFlightByDepartureAndArrivalAirport(string departure, string arrival)
         {
-            // extract these things in Service
+            var flights = this.destinationService.ASearchllFlightsWithDepartureAndDestination(departure, arrival)
+                .Where(x => x.Name == departure)
+                .Select(y => new DepartureAirportViewModel(y))
+                .ToList();
 
-
-            //model.FoundFlights = flights;
-
-            return this.View();
-        }
-
-        public ActionResult Airline(string airline)
-        {
-
-
-            return this.View();
-        }
-
-        public ActionResult Destination(string departureCity, string arrivalCity)
-        {
-
-
-            return this.View();
+            return this.PartialView("_FilterFlightsPartial", flights);
         }
 
         public ActionResult DestinationAndPrice(string departureCity, string arrivalCity, decimal price)
