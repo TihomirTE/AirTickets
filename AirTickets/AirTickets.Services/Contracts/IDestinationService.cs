@@ -8,7 +8,7 @@ namespace AirTickets.Services.Contracts
     {
         IEnumerable<DepartureAirportModel> GetAllAirportSortedAlphabetically();
 
-        IEnumerable<DepartureAirportModel> GetAllAirportsWithFlightsIncluded();
+        IEnumerable<DepartureAirportModel> GetAllFlightsWithDestinationIncluded();
 
         //ArrivalAirportModel GetById(Guid id);
     }

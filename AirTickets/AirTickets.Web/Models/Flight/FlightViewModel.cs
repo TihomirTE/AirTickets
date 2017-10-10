@@ -21,36 +21,24 @@ namespace AirTickets.Web.Models.Flight
         {
             if (flight != null)
             {
-            //    this.Id = flight.Id;
-            //    this.DepartureCity = flight.DepartureAirport;
-            //    this.ArrivalCity = flight.ArrivalAirport;
                 this.Price = flight.Price;
-                this.Airline = flight.Airline;
+                this.Duration = flight.Duration;
                 this.TravelClass = flight.TravelClass;
             }
         }
 
-        //public Guid Id { get; private set; }
+        public decimal Price { get; set; }
 
-        //public DepartureAirport DepartureCity { get; private set; }
+        public TimeSpan Duration { get; set; }
 
-        //public DepartureAirport ArrivalCity { get; private set; }
-
-        public decimal Price { get; private set; }
-
-        public AirlineModel Airline { get; private set; }
-
-        public TravelClass TravelClass { get; private set; }
+        public TravelClass TravelClass { get; set; }
 
         //[Display(Name ="Total sum = ")]
         //public decimal Price { get; set; }
 
         ////public void CreateMappings(IMapperConfigurationExpression configuration)
         ////{
-            
+
         ////}
-
-        //public TravelClass TravelClass { get; set; }
-
     }
 }

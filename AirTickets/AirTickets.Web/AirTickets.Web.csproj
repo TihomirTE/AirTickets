@@ -228,6 +228,7 @@
     <Compile Include="Models\AccountViewModels.cs" />
     <Compile Include="Models\FlightSearchViewModel.cs" />
     <Compile Include="Models\Flight\AirlineViewModel.cs" />
+    <Compile Include="Models\Flight\AllFlightInformationView.cs" />
     <Compile Include="Models\Flight\ArrivalAirportViewModel.cs" />
     <Compile Include="Models\Flight\CountryViewModel.cs" />
     <Compile Include="Models\Flight\DepartureAirportViewModel.cs" />

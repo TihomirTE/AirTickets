@@ -52,21 +52,22 @@ namespace AirTickets.Web.Controllers.Flight
             //var allFlight = this.flightService.GetAllFlights()
             //    .Select(x => new FlightViewModel(x)).ToList();
 
-            var allDestination = this.destinationService.GetAllAirportSortedAlphabetically()
-                        .Select(x => new DepartureAirportViewModel(x)).ToList();
+            var allDestination = this.destinationService.GetAllFlightsWithDestinationIncluded()
+                        .Select(x => new DepartureAirportViewModel(x))
+                        .ToList();
 
             return this.PartialView("_AllFlights", allDestination);
         }
 
-        public ActionResult FilterFlights(string searchTerm)
+        public ActionResult FilterFlightsByPrice(int price)
         {
-            if (string.IsNullOrEmpty(searchTerm))
+            if (price <= 0)
             {
                 return this.AllFlights();
             }
             else
             {
-                var filterFlights = this.flightService.GetFlightsByPrice(2)
+                var filterFlights = this.flightService.GetFlightsByPrice(price)
                     .Select(b => new FlightViewModel(b))
                     .ToList();
 

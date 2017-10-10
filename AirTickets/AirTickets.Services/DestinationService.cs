@@ -40,7 +40,7 @@ namespace AirTickets.Services
                 .ToList();
         }
 
-        public IEnumerable<DepartureAirportModel> GetAllAirportsWithFlightsIncluded()
+        public IEnumerable<DepartureAirportModel> GetAllFlightsWithDestinationIncluded()
         {
             return this.destinationRepo.AllWithInclude(x => x.ArrivalAirports)
                 .Select(DepartureAirportModel.Create)
