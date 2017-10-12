@@ -1,0 +1,25 @@
+Users
+
+user: airtickets-admin
+password: password1!
+----------------------------------------------------------------------
+
+Server=tcp:airtickets-database-server.database.windows.net,1433;Initial Catalog=airtickets-database;
+Persist Security Info=False;
+User ID=airtickets-admin;Password=password1!;
+MultipleActiveResultSets=False;Encrypt=True;
+TrustServerCertificate=False;Connection Timeout=30;
+----------------------------------------------------------------------
+
+userPWD="ijGLDvuG8vziybJ1TxWsq2hzJHrDbytg2Qt1JW0LMFZo5wCXJJ4wCcznBCfu"
+
+-------------------------------------------------------------------
+backup database - C:\Program Files\Microsoft SQL Server\MSSQL13.MSSQLSERVER\MSSQL\Backup\
+
+---------------------------------------------------------------------
+Jenkins
+
+user-admin: admin
+name: Tihomir
+password: password1!
+
