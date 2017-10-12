@@ -52,8 +52,8 @@ namespace AirTickets.Web.Controllers.Flight
             //var allFlight = this.flightService.GetAllFlights()
             //    .Select(x => new FlightViewModel(x)).ToList();
 
-            var allDestination = this.destinationService.GetAllAirportSortedAlphabetically()
-                        .Select(x => new DepartureAirportViewModel(x))
+            var allDestination = this.flightService.GetAllFlights()
+                        .Select(x => new FlightViewModel(x))
                         .ToList();
 
             return this.PartialView("_AllFlights", allDestination);

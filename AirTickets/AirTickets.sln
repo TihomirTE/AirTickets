@@ -1,7 +1,7 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 15
-VisualStudioVersion = 15.0.26730.16
+# Visual Studio 14
+VisualStudioVersion = 14.0.25420.1
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTickets.Web", "AirTickets.Web\AirTickets.Web.csproj", "{61594E7E-0538-4541-9C1E-DF658B30F091}"
 EndProject
@@ -14,6 +14,8 @@ EndProject
 Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "Services", "Services", "{078E43C7-6654-4DCE-AD61-E907E52646B8}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTickets.Services", "AirTickets.Services\AirTickets.Services.csproj", "{A22E70CF-5F9B-4009-8950-D9FFE745157B}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "AirTickets.UnitTests", "AirTickets.UnitTests\AirTickets.UnitTests.csproj", "{22449463-6AA9-43BE-9558-AA8AC1886C75}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -37,6 +39,10 @@ Global
 		{A22E70CF-5F9B-4009-8950-D9FFE745157B}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{A22E70CF-5F9B-4009-8950-D9FFE745157B}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{A22E70CF-5F9B-4009-8950-D9FFE745157B}.Release|Any CPU.Build.0 = Release|Any CPU
+		{22449463-6AA9-43BE-9558-AA8AC1886C75}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{22449463-6AA9-43BE-9558-AA8AC1886C75}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{22449463-6AA9-43BE-9558-AA8AC1886C75}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{22449463-6AA9-43BE-9558-AA8AC1886C75}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

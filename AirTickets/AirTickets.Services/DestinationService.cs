@@ -33,9 +33,8 @@ namespace AirTickets.Services
 
         public IEnumerable<DepartureAirportModel> GetAllAirportSortedAlphabetically()
         {
-            return this.destinationRepo.All.ToList()
+            return this.destinationRepo.All
                 .OrderBy(x => x.Name)
-                .AsQueryable()
                 .Select(DepartureAirportModel.Create)
                 .ToList();
         }
