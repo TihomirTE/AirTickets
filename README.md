@@ -4,5 +4,5 @@
 
 ## Build Status
 
-[![Build Status](http://localhost:8080/job/automatic%20build/badge/icon)](http://localhost:8080/job/automatic%20build/)
+[![Build status](https://ci.appveyor.com/api/projects/status/5btjx3b11c7h2tk7?svg=true)](https://ci.appveyor.com/project/TihomirTE/airtickets)
 
