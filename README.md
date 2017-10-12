@@ -4,3 +4,5 @@
 
 ## Build Status
 
+[![Build Status](http://localhost:8080/job/automatic%20build/badge/icon)](http://localhost:8080/job/automatic%20build/)
+
