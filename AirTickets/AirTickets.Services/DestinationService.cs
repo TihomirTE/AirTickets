@@ -1,4 +1,5 @@
-﻿using AirTickets.Data.Model;
+﻿using AirTickets.Data.Contracts;
+using AirTickets.Data.Model;
 using AirTickets.Data.Repositories;
 using AirTickets.Data.SaveContext;
 using AirTickets.Services.Contracts;

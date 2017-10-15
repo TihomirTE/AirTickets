@@ -13,7 +13,7 @@ namespace AirTickets.Web
     {
         protected void Application_Start()
         {
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<MsSqlDbContext, Configuration>());
+            Database.SetInitializer(new MigrateDatabaseToLatestVersion<SqlDbContext, Configuration>());
 
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());

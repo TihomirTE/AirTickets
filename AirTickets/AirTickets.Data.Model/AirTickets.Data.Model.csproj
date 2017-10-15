@@ -56,6 +56,7 @@
     <Compile Include="Abstracts\DataModel.cs" />
     <Compile Include="Airline.cs" />
     <Compile Include="ArrivalAirport.cs" />
+    <Compile Include="Constants\ModelConstants.cs" />
     <Compile Include="DepartureAirport.cs" />
     <Compile Include="Contracts\IAuditable.cs" />
     <Compile Include="Contracts\IDeletable.cs" />

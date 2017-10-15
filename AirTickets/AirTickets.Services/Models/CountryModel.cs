@@ -28,6 +28,6 @@ namespace AirTickets.Services.Models
 
         public string Name { get; set; }
 
-        //public ICollection<ArrivalAirportModel> Airports { get; set; }
+        public ICollection<DepartureAirportModel> Airports { get; set; }
     }
 }

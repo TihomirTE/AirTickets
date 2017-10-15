@@ -9,7 +9,7 @@ namespace AirTickets.Data.Migrations
     using System.Data.Entity.Migrations;
     using System.Linq;
 
-    public sealed class Configuration : DbMigrationsConfiguration<MsSqlDbContext>
+    public sealed class Configuration : DbMigrationsConfiguration<SqlDbContext>
     {
         private const string AdministratorUserName = "pesho@thebest.com";
         private const string AdministratorPassword = "123456";
@@ -22,7 +22,7 @@ namespace AirTickets.Data.Migrations
             this.AutomaticMigrationDataLossAllowed = true;
         }
 
-        protected override void Seed(MsSqlDbContext context)
+        protected override void Seed(SqlDbContext context)
         {
             this.SeedUsers(context);
             this.SeedSimpleData(context);
@@ -30,7 +30,7 @@ namespace AirTickets.Data.Migrations
             base.Seed(context);
         }
 
-        private void SeedUsers(MsSqlDbContext context)
+        private void SeedUsers(SqlDbContext context)
         {
             if (!context.Roles.Any())
             {
@@ -56,7 +56,7 @@ namespace AirTickets.Data.Migrations
             }
         }
 
-        private void SeedSimpleData(MsSqlDbContext context)
+        private void SeedSimpleData(SqlDbContext context)
         {
             if (!context.Flights.Any())
             {
@@ -64,9 +64,9 @@ namespace AirTickets.Data.Migrations
                 {
                     var flight = new Flight()
                     {
-                        Price = 100 + i,
+                        Price = 200 + i,
                         TravelClass = TravelClass.Economy,
-                        Duration = TimeSpan.FromHours(1 + i),
+                        Duration = TimeSpan.FromHours(2 + i),
                         //User = context.Users.First(x => x.Email == "pesho@thebest.com"),
                         CreatedOn = DateTime.Now
                     };
@@ -74,7 +74,7 @@ namespace AirTickets.Data.Migrations
 
                     var airport = new DepartureAirport()
                     {
-                        Name = "London" + i,
+                        Name = "Bulgaria" + i,
                         AirportCode = "EBLN" + i
                     };
                     context.DepartureAirports.Add(airport);
@@ -93,6 +93,12 @@ namespace AirTickets.Data.Migrations
                         AirportCode = "EBLN" + i
                     };
                     context.ArrivalAirports.Add(airportAr);
+
+                    var country = new Country()
+                    {
+                        Name = "Bulgaria",
+                    };
+                    context.Countries.Add(country);
                 }
             }
         }

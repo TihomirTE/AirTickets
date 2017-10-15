@@ -6,7 +6,7 @@ using System.Linq.Expressions;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace AirTickets.Data.Repositories
+namespace AirTickets.Data.Contracts
 {
     public interface IEfRepository<T> where T : class, IDeletable
     {

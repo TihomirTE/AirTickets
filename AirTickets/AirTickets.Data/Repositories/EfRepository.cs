@@ -1,4 +1,5 @@
-﻿using AirTickets.Data.Model.Contracts;
+﻿using AirTickets.Data.Contracts;
+using AirTickets.Data.Model.Contracts;
 using Bytes2you.Validation;
 using System;
 using System.Data.Entity;
@@ -11,10 +12,10 @@ namespace AirTickets.Data.Repositories
     public class EfRepository<T> : IEfRepository<T>
         where T : class, IDeletable
     {
-        private readonly MsSqlDbContext context;
+        private readonly SqlDbContext context;
         private readonly IDbSet<T> dbSet;
 
-        public EfRepository(MsSqlDbContext context)
+        public EfRepository(SqlDbContext context)
         {
             Guard.WhenArgument(context, "context").IsNull().Throw();
 

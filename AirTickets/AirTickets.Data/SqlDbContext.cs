@@ -1,4 +1,5 @@
-﻿using AirTickets.Data.Model;
+﻿using AirTickets.Data.Contracts;
+using AirTickets.Data.Model;
 using AirTickets.Data.Model.Contracts;
 using Microsoft.AspNet.Identity.EntityFramework;
 using System;
@@ -10,9 +11,9 @@ using System.Threading.Tasks;
 
 namespace AirTickets.Data
 {
-    public class MsSqlDbContext : IdentityDbContext<User>
+    public class SqlDbContext : IdentityDbContext<User>, ISqlDbContext
     {
-        public MsSqlDbContext()
+        public SqlDbContext()
             : base("DefaultConnection", throwIfV1Schema: false)
         {
         }
@@ -25,7 +26,7 @@ namespace AirTickets.Data
 
         public virtual IDbSet<ArrivalAirport> ArrivalAirports { get; set; }
 
-        //public virtual IDbSet<Country> Countries { get; set; }
+        public virtual IDbSet<Country> Countries { get; set; }
 
         public override int SaveChanges()
         {
@@ -53,9 +54,9 @@ namespace AirTickets.Data
             }
         }
 
-        public static MsSqlDbContext Create()
+        public static SqlDbContext Create()
         {
-            return new MsSqlDbContext();
+            return new SqlDbContext();
         }
     }
 }

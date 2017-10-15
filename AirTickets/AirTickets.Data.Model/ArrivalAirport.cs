@@ -1,6 +1,8 @@
 ﻿using AirTickets.Data.Model.Abstracts;
+using AirTickets.Data.Model.Constants;
 using System;
 using System.Collections.Generic;
+using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
@@ -16,6 +18,8 @@ namespace AirTickets.Data.Model
             this.airlines = new HashSet<Airline>();
         }
 
+        [MinLength(ModelConstants.MinNameLenght)]
+        [MaxLength(ModelConstants.MaxNameLenght)]
         public string Name { get; set; }
 
         public string AirportCode { get; set; }

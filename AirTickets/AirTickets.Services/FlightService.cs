@@ -1,4 +1,5 @@
-﻿using AirTickets.Data.Model;
+﻿using AirTickets.Data.Contracts;
+using AirTickets.Data.Model;
 using AirTickets.Data.Repositories;
 using AirTickets.Data.SaveContext;
 using AirTickets.Services.Contracts;
@@ -15,14 +16,16 @@ namespace AirTickets.Services
     public class FlightService : IFlightService
     {
         private readonly IEfRepository<Flight> flightRepo;
+        private readonly IEfRepository<Airline> airlineRepo;
         private readonly ISaveContext saveContext;
 
-        public FlightService(IEfRepository<Flight> flightRepo, ISaveContext saveContext)
+        public FlightService(IEfRepository<Flight> flightRepo, IEfRepository<Airline> airlineRepo, ISaveContext saveContext)
         {
             Guard.WhenArgument(flightRepo, "flightRepo").IsNull().Throw();
             Guard.WhenArgument(saveContext, "saveContext").IsNull().Throw();
 
             this.flightRepo = flightRepo;
+            this.airlineRepo = airlineRepo;
             this.saveContext = saveContext;
         }
 

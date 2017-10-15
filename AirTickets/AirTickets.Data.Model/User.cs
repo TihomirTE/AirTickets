@@ -14,11 +14,11 @@ namespace AirTickets.Data.Model
 {
     public class User : IdentityUser, IAuditable, IDeletable
     {
-        private ICollection<Flight> tickets;
+        private ICollection<Flight> flights;
 
         public User()
         {
-            this.tickets = new HashSet<Flight>();
+            this.flights = new HashSet<Flight>();
         }
 
         [DataType(DataType.DateTime)]
@@ -33,15 +33,15 @@ namespace AirTickets.Data.Model
         [DataType(DataType.DateTime)]
         public DateTime? DeletedOn { get; set; }
 
-        public virtual ICollection<Flight> Tickets
+        public virtual ICollection<Flight> Flights
         {
             get
             {
-                return this.tickets;
+                return this.flights;
             }
             set
             {
-                this.tickets = value;
+                this.flights = value;
             }
         }
 
