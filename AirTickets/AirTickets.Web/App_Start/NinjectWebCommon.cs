@@ -1,41 +1,42 @@
+using AirTickets.Auth;
+using AirTickets.Auth.Contracts;
+using AirTickets.Data;
+using AirTickets.Data.Contracts;
+using AirTickets.Data.EfRepository;
+using AirTickets.DataServices;
+using AirTickets.DataServices.Contracts;
+using Microsoft.AspNet.Identity.Owin;
+using Microsoft.Web.Infrastructure.DynamicModuleHelper;
+using Ninject;
+using Ninject.Web.Common;
+using System;
+using System.Web;
+
 [assembly: WebActivatorEx.PreApplicationStartMethod(typeof(AirTickets.Web.App_Start.NinjectWebCommon), "Start")]
 [assembly: WebActivatorEx.ApplicationShutdownMethodAttribute(typeof(AirTickets.Web.App_Start.NinjectWebCommon), "Stop")]
 
 namespace AirTickets.Web.App_Start
 {
-    using System;
-    using System.Web;
-
-    using Microsoft.Web.Infrastructure.DynamicModuleHelper;
-
-    using Ninject;
-    using Ninject.Web.Common;
-    using AirTickets.Data.Repositories;
-    using AirTickets.Data;
-    using System.Data.Entity;
-    using Ninject.Extensions.Conventions;
-    using AirTickets.Services.Contracts;
-    using AutoMapper;
-    using AirTickets.Data.SaveContext;
-    using System.IO;
-    using System.Reflection;
-    using AirTickets.Services;
-    using AirTickets.Data.Contracts;
-
-    public static class NinjectWebCommon
+    public static class NinjectWebCommon 
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
+
+        public static IKernel Kernel
+        {
+            get;
+            private set;
+        }
 
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start()
+        public static void Start() 
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-
+        
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -43,25 +44,25 @@ namespace AirTickets.Web.App_Start
         {
             bootstrapper.ShutDown();
         }
-
+        
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
         /// <returns>The created kernel.</returns>
-        private static IKernel CreateKernel()
+        public static IKernel CreateKernel()
         {
-            var kernel = new StandardKernel();
+            Kernel = new StandardKernel();
             try
             {
-                kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
-                kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
+                Kernel.Bind<Func<IKernel>>().ToMethod(ctx => () => new Bootstrapper().Kernel);
+                Kernel.Bind<IHttpModule>().To<HttpApplicationInitializationHttpModule>();
 
-                RegisterServices(kernel);
-                return kernel;
+                RegisterServices(Kernel);
+                return Kernel;
             }
             catch
             {
-                kernel.Dispose();
+                Kernel.Dispose();
                 throw;
             }
         }
@@ -72,35 +73,14 @@ namespace AirTickets.Web.App_Start
         /// <param name="kernel">The kernel.</param>
         private static void RegisterServices(IKernel kernel)
         {
-            kernel.Bind(x =>
-            {
-                x.FromThisAssembly()
-                 .SelectAllClasses()
-                 .BindDefaultInterface();
-            });
+            kernel.Bind<IAirTicketDbContextSaveChanges>().To<AirTicketEfDbContext>().InRequestScope();
 
-            kernel.Bind(x =>
-            {
-                x.FromAssemblyContaining(typeof(IService))
-                 .SelectAllClasses()
-                 .BindDefaultInterface();
-            });
+            kernel.Bind<ISignInService>().ToMethod(_ => HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>());
+            kernel.Bind<IUserService>().ToMethod(_ => HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>());
 
-          //  var codeBase = Assembly.GetExecutingAssembly().CodeBase;
-          //  var uri = new UriBuilder(codeBase);
-          //  var path = Uri.UnescapeDataString(uri.Path);
-
-          //  kernel.Bind(
-          //x =>
-          //    x.FromAssembliesInPath(Path.GetDirectoryName(path))
-          //        .SelectAllClasses()
-          //        .InheritedFrom(typeof(IMapper))
-          //        .BindAllInterfaces());
-
-            kernel.Bind(typeof(DbContext), typeof(SqlDbContext)).To<SqlDbContext>().InRequestScope();
-            kernel.Bind(typeof(IEfRepository<>)).To(typeof(EfRepository<>));
-            kernel.Bind<ISaveContext>().To<SaveContext>();
-            kernel.Bind<IMapper>().To<Mapper>();
-        }
+            kernel.Bind(typeof(IEfDbSetWrapper<>)).To(typeof(EfDbSetWrapper<>));
+            kernel.Bind<IFlightService>().To<FlightService>();
+            kernel.Bind<IAirlineService>().To<AirlineService>();
+        }        
     }
 }

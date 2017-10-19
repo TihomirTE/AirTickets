@@ -1,0 +1,35 @@
+﻿@model FlightViewModel
+
+<div>
+    <div>
+        Flight number <p>@Html.DisplayFor(x => x.Title)</p>
+    </div>
+    <div>
+        Price @Html.DisplayFor(x => x.Price)
+    </div>
+    <div>
+        Duration @Html.DisplayFor(x => x.Duration)
+    </div>
+    <div class="hideText">
+        @Html.ActionLink("More Details", "Details", new { id = Model.Id }, new { @class = "linkdisabled" })
+        </div>
+        <div></div>
+    </div>
+
+@section scripts {
+    <script>
+        $(function () {
+            $(".hideText").click(function () {
+                return true;
+            })
+        })
+    </script>
+}
+
+@section styles{
+    .hideText{
+    text-indent: 100%;
+    white-space: nowrap;
+    overflow: hidden;
+    }
+}

@@ -1,10 +1,4 @@
-﻿using AirTickets.Services.Contracts;
-using AirTickets.Web.Models;
-using AutoMapper.QueryableExtensions;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Web;
+﻿using AirTickets.Web.App_GlobalResources;
 using System.Web.Mvc;
 
 namespace AirTickets.Web.Controllers
@@ -18,7 +12,7 @@ namespace AirTickets.Web.Controllers
 
         public ActionResult About()
         {
-            ViewBag.Message = "About";
+            ViewBag.Message = GlobalResources.ViewAboutMessage;
 
             return View();
         }
@@ -46,18 +40,5 @@ namespace AirTickets.Web.Controllers
 
             return PartialView("_MessageContact");
         }
-
-        public ActionResult Serial(string letterCase)
-        {
-            var serial = "MVC 5 project";
-
-            if (letterCase == "lower")
-            {
-                return Content(serial.ToLower());
-            }
-
-            return RedirectToAction("Index");
-        }
-       
     }
 }

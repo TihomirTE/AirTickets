@@ -1,0 +1,14 @@
+﻿@model IEnumerable<AirlineViewModel>
+
+<div>
+    @foreach (var airline in Model)
+    {
+        <h3>@airline.Name</h3>
+        <div class="panel">
+            @foreach (var flight in airline.Flights)
+            {
+                @Html.DisplayFor(c => flight)
+            }
+        </div>
+    }
+</div>
