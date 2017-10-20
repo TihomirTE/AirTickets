@@ -9,5 +9,6 @@ namespace AirTickets.DataServices.Contracts
         FlightModel GetById(Guid? id);
 
         IEnumerable<FlightModel> GetFlightByPrice(int searchTerm);
+        IEnumerable<FlightModel> GetAllFlights();
     }
 }

@@ -9,6 +9,7 @@ using System.Web.Mvc;
 
 namespace AirTickets.Web.Controllers
 {
+    [Authorize]
     public class FlightController : Controller
     {
         private readonly IFlightService flightService;
@@ -42,10 +43,13 @@ namespace AirTickets.Web.Controllers
         [ChildActionOnly]
         public ActionResult AllFlights()
         {
-            var allAirlineViewModels = this.airlineService.GetAllAirlinesWithFlightsIncluded()
-                                            .Select(c => new AirlineViewModel(c)).ToList();
+            //var allAirlineViewModels = this.airlineService.GetAllAirlinesWithFlightsIncluded()
+            //                                .Select(c => new AirlineViewModel(c)).ToList();
 
-            return this.PartialView("_AllFlightsPartial", allAirlineViewModels);
+            var allFlights = this.flightService.GetAllFlights()
+                .Select(x => new FlightViewModel(x)).ToList();
+
+            return this.PartialView("_AllFlightsPartial", allFlights);
         }
 
         [HttpPost]

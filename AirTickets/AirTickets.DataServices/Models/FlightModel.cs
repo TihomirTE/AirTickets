@@ -37,7 +37,7 @@ namespace AirTickets.DataServices.Models
 
         public TravelClass TravelClass { get; set; }
 
-        public AirlineModel Airline { get; set; }
+        public Airline Airline { get; set; }
 
         public Guid AirlineId { get; set; }
 
@@ -52,6 +52,7 @@ namespace AirTickets.DataServices.Models
                     Price = flight.Price,
                     Duration = flight.Duration,
                     TravelClass = flight.TravelClass,
+                    Airline = flight.Airline,
                 };
             }
         }

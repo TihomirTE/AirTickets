@@ -39,6 +39,12 @@ namespace AirTickets.DataServices
 
             return result;
         }
+        public IEnumerable<FlightModel> GetAllFlights()
+        {
+            return this.flightRepo.AllWithInclude(x => x.Airline)
+                .Select(FlightModel.Create)
+                .ToList();
+        }
 
         public IEnumerable<FlightModel> GetFlightByPrice(int searchTerm)
         {

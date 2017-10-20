@@ -19,6 +19,10 @@ namespace AirTickets.Web.Models
                 this.Price = flight.Price;
                 this.Duration = flight.Duration;
                 this.TravelClass = flight.TravelClass;
+                if (flight.Airline != null)
+                {
+                    this.Airline = flight.Airline.Name;
+                }
             }
         }
 
@@ -31,5 +35,9 @@ namespace AirTickets.Web.Models
         public TimeSpan Duration { get; set; }
 
         public TravelClass TravelClass { get; set; }
+
+        public string Airline { get; set; }
+
+        //public Guid AirlineId { get; set; }
     }
 }

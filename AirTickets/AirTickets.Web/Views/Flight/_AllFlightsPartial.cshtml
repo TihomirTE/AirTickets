@@ -1,14 +1,38 @@
-﻿@model IEnumerable<AirlineViewModel>
+﻿@model IEnumerable<FlightViewModel>
+
+@Styles.Render("~/Content/kendo/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/kendo")
 
 <div>
-    @foreach (var airline in Model)
-    {
-        <h3>@airline.Name</h3>
-        <div class="panel">
-            @foreach (var flight in airline.Flights)
+    @*@foreach (var airline in Model)
+        {
+            <h3>@airline.Name</h3>
+            <div class="panel">
+                @foreach (var flight in airline.Flights)
+                {
+                    @Html.DisplayFor(c => flight)
+                }
+            </div>
+        }*@
+
+    @(Html.Kendo().Grid(Model)
+            .Name("grid")
+            .Columns(columns =>
             {
-                @Html.DisplayFor(c => flight)
-            }
-        </div>
-    }
+            columns.Bound(x => x.Airline);
+            columns.Bound(x => x.Title).Title("Flight Number");
+            columns.Bound(x => x.Price);
+            columns.Bound(x => x.Duration).Title("Flight Duration");
+            columns.Bound(x => x.Id)
+                .Title("Details")
+                .Template(@<text>
+                    @Html.ActionLink("Show Details", "Details", new { id = @item.Id })
+                </text>);
+
+            })
+            .Pageable()
+            .Sortable()
+    )
+
 </div>
