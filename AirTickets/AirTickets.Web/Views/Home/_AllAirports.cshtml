@@ -1,0 +1,20 @@
+﻿@model IEnumerable<AirportViewModel>
+
+@Styles.Render("~/Content/kendo/css")
+@Scripts.Render("~/bundles/jquery")
+@Scripts.Render("~/bundles/kendo")
+
+
+
+<div>
+    @(Html.Kendo().Grid(Model)
+        .Name("grid")
+        .Columns(columns =>
+        {
+            columns.Bound(x => x.Name).Title("Airport Name");
+            columns.Bound(x => x.AirportCode).Title("ICAO abbreviation");
+        })
+         .Pageable()
+            .Sortable()
+    )
+</div>

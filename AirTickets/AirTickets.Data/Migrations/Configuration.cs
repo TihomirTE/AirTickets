@@ -26,11 +26,17 @@ namespace AirTickets.Data.Migrations
             IList<Airline> airlines = new List<Airline>()
             {
                 new Airline() { Id = Guid.NewGuid(), Name = "BulgariaAir" },
-                new Airline() { Id = Guid.NewGuid(), Name = "RyanAir" },
                 new Airline() { Id = Guid.NewGuid(), Name = "WizzAir" },
+                new Airline() { Id = Guid.NewGuid(), Name = "RyanAir" },
                 new Airline() { Id = Guid.NewGuid(), Name = "BritishAir" }
-                //new Airline() { Id = Guid.NewGuid(), Name = "Data Structures and Algorithms" },
-                //new Airline() { Id = Guid.NewGuid(), Name = "Rocket Science" }
+            };
+
+            IList<Airport> airports = new List<Airport>()
+            {
+                new Airport() {Id = Guid.NewGuid(), Name = "Sofia", AirportCode = "LBSF" },
+                new Airport() {Id = Guid.NewGuid(), Name = "Rome", AirportCode = "LIRF" },
+                new Airport() {Id = Guid.NewGuid(), Name = "Plovdiv", AirportCode = "LBPD" },
+                new Airport() {Id = Guid.NewGuid(), Name = "London", AirportCode = "EGLL" }
             };
 
             List<Flight> flights = new List<Flight>()
@@ -41,7 +47,9 @@ namespace AirTickets.Data.Migrations
                    Price = 50,
                    Duration = TimeSpan.Parse("01:20:00"),
                    TravelClass = TravelClass.Business,
-                   Airline = airlines[0]
+                   Airline = airlines[0],
+                   DepartureAirport = airports[0],
+                   ArrivalAirport = airports[1]
                 },
                 new Flight() {
                     Id = Guid.NewGuid(),
@@ -49,7 +57,9 @@ namespace AirTickets.Data.Migrations
                    Price = 150,
                    Duration = TimeSpan.Parse("01:45:00"),
                    TravelClass = TravelClass.First,
-                   Airline = airlines[1]
+                   Airline = airlines[1],
+                    DepartureAirport = airports[1],
+                   ArrivalAirport = airports[0]
                 },
                 new Flight() {
                     Id = Guid.NewGuid(),
@@ -57,7 +67,9 @@ namespace AirTickets.Data.Migrations
                    Price = 40,
                    Duration = TimeSpan.Parse("01:05:00"),
                    TravelClass = TravelClass.Economy,
-                   Airline = airlines[2]
+                   Airline = airlines[2],
+                    DepartureAirport = airports[2],
+                   ArrivalAirport = airports[3]
                 },
                 new Flight() {
                     Id = Guid.NewGuid(),
@@ -65,7 +77,9 @@ namespace AirTickets.Data.Migrations
                    Price = 250,
                    Duration = TimeSpan.Parse("02:20:00"),
                    TravelClass = TravelClass.Business,
-                   Airline = airlines[3]
+                   Airline = airlines[3],
+                    DepartureAirport = airports[3],
+                   ArrivalAirport = airports[2]
                 },
                 new Flight() {
                     Id = Guid.NewGuid(),
@@ -73,7 +87,9 @@ namespace AirTickets.Data.Migrations
                    Price = 220,
                    Duration = TimeSpan.Parse("01:55:00"),
                    TravelClass = TravelClass.First,
-                   Airline = airlines[3]
+                   Airline = airlines[3],
+                    DepartureAirport = airports[2],
+                   ArrivalAirport = airports[3]
                 },
                 new Flight() {
                     Id = Guid.NewGuid(),
@@ -81,7 +97,9 @@ namespace AirTickets.Data.Migrations
                    Price = 110,
                    Duration = TimeSpan.Parse("02:20:00"),
                    TravelClass = TravelClass.Economy,
-                   Airline = airlines[1]
+                   Airline = airlines[1],
+                    DepartureAirport = airports[0],
+                   ArrivalAirport = airports[1]
                 },
                 new Flight() {
                     Id = Guid.NewGuid(),
@@ -89,7 +107,9 @@ namespace AirTickets.Data.Migrations
                    Price = 175,
                    Duration = TimeSpan.Parse("02:25:00"),
                    TravelClass = TravelClass.Business,
-                   Airline = airlines[0]
+                   Airline = airlines[0],
+                    DepartureAirport = airports[1],
+                   ArrivalAirport = airports[0]
                 },
             };
 

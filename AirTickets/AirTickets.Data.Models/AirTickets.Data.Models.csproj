@@ -40,6 +40,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Airport.cs" />
     <Compile Include="Enums\TravelClass.cs" />
     <Compile Include="Flight.cs" />
     <Compile Include="Airline.cs" />

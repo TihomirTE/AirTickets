@@ -17,8 +17,8 @@ namespace AirTickets.Web.Controllers
 
         public FlightController(IFlightService flightService, IAirlineService airlineService)
         {
-            Guard.WhenArgument(flightService, "bookService").IsNull().Throw();
-            Guard.WhenArgument(airlineService, "categoryService").IsNull().Throw();
+            Guard.WhenArgument(flightService, "flightService").IsNull().Throw();
+            Guard.WhenArgument(airlineService, "airlineService").IsNull().Throw();
 
             this.flightService = flightService;
             this.airlineService = airlineService;

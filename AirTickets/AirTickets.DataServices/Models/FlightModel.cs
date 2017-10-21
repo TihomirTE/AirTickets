@@ -24,6 +24,16 @@ namespace AirTickets.DataServices.Models
                 {
                     this.AirlineId = flight.Airline.Id;
                 }
+
+                if (flight.DepartureAirport != null)
+                {
+                    this.DepartureAirportId = flight.DepartureAirport.Id;
+                }
+
+                if (flight.ArrivalAirport != null)
+                {
+                    this.ArrivalAirportId = flight.ArrivalAirport.Id;
+                }
             }
         }
 
@@ -41,6 +51,14 @@ namespace AirTickets.DataServices.Models
 
         public Guid AirlineId { get; set; }
 
+        public Airport DepartureAirport { get; set; }
+
+        public Guid DepartureAirportId { get; set; }
+
+        public Airport ArrivalAirport { get; set; }
+
+        public Guid ArrivalAirportId { get; set; }
+
         public static Expression<Func<Flight, FlightModel>> Create
         {
             get
@@ -53,6 +71,8 @@ namespace AirTickets.DataServices.Models
                     Duration = flight.Duration,
                     TravelClass = flight.TravelClass,
                     Airline = flight.Airline,
+                    DepartureAirport = flight.DepartureAirport,
+                    ArrivalAirport = flight.ArrivalAirport
                 };
             }
         }

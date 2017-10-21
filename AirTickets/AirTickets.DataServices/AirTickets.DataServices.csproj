@@ -44,10 +44,13 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirportService.cs" />
+    <Compile Include="Contracts\IAirportService.cs" />
     <Compile Include="FlightService.cs" />
     <Compile Include="AirlineService.cs" />
     <Compile Include="Contracts\IFlightService.cs" />
     <Compile Include="Contracts\IAirlineService.cs" />
+    <Compile Include="Models\AirportModel.cs" />
     <Compile Include="Models\FlightModel.cs" />
     <Compile Include="Models\AirlineModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />

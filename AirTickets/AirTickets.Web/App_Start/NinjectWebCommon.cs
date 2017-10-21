@@ -81,6 +81,7 @@ namespace AirTickets.Web.App_Start
             kernel.Bind(typeof(IEfDbSetWrapper<>)).To(typeof(EfDbSetWrapper<>));
             kernel.Bind<IFlightService>().To<FlightService>();
             kernel.Bind<IAirlineService>().To<AirlineService>();
+            kernel.Bind<IAirportService>().To<AirportService>();
         }        
     }
 }

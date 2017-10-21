@@ -7,6 +7,7 @@
     }, new { id = "ajaxForm" }))
     {
         <input type="text" name="price" />
+        <button type="submit" class="btn btn-warning">Search by Price</button>
     }
 </div>
 <div id="flightPanel" class="panel">
@@ -16,7 +17,7 @@
 @section scripts {
     <script>
         $(function () {
-            $('[name="price"]').keyup(function () {
+            $('[name="price"]').click()(function () {
                 $('#ajaxForm').submit()
             })
         })

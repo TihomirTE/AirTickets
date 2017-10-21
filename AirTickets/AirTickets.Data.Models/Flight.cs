@@ -18,5 +18,13 @@ namespace AirTickets.Data.Models
         public Guid AirlineId { get; set; }
 
         public virtual Airline Airline { get; set; }
+
+        public Guid DepartureAirportId { get; set; }
+
+        public virtual Airport DepartureAirport { get; set; }
+
+        public Guid ArrivalAirportId { get; set; }
+
+        public virtual Airport ArrivalAirport { get; set; }
     }
 }

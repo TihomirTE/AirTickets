@@ -12,13 +12,13 @@ namespace AirTickets.DataServices.Models
         {
         }
 
-        public AirlineModel(Airline category)
+        public AirlineModel(Airline airline)
         {
-            if (category != null)
+            if (airline != null)
             {
-                this.Id = category.Id;
-                this.Name = category.Name;
-                this.Flights = category.Flights.Select(b => new FlightModel(b)).ToList();
+                this.Id = airline.Id;
+                this.Name = airline.Name;
+                this.Flights = airline.Flights.Select(b => new FlightModel(b)).ToList();
             }
         }
 

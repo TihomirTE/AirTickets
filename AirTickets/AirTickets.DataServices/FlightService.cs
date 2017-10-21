@@ -17,7 +17,7 @@ namespace AirTickets.DataServices
 
         public FlightService(IEfDbSetWrapper<Flight> flightRepo, IAirTicketDbContextSaveChanges dbContext)
         {
-            Guard.WhenArgument(flightRepo, "bookSetWrapper").IsNull().Throw();
+            Guard.WhenArgument(flightRepo, "flightRepo").IsNull().Throw();
             Guard.WhenArgument(dbContext, "dbContext").IsNull().Throw();
 
             this.flightRepo = flightRepo;

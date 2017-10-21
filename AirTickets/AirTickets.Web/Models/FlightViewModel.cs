@@ -23,6 +23,16 @@ namespace AirTickets.Web.Models
                 {
                     this.Airline = flight.Airline.Name;
                 }
+
+                if (flight.DepartureAirport != null)
+                {
+                    this.DepartureAirport = flight.DepartureAirport.Name;
+                }
+
+                if (flight.ArrivalAirport != null)
+                {
+                    this.ArrivalAirport = flight.ArrivalAirport.Name;
+                }
             }
         }
 
@@ -37,6 +47,11 @@ namespace AirTickets.Web.Models
         public TravelClass TravelClass { get; set; }
 
         public string Airline { get; set; }
+
+        public string DepartureAirport { get; set; }
+
+        public string ArrivalAirport { get; set; }
+
 
         //public Guid AirlineId { get; set; }
     }
