@@ -13,7 +13,7 @@ namespace AirTickets.Web.Controllers
     public class FlightController : Controller
     {
         private readonly IFlightService flightService;
-        private readonly IAirlineService airlineService;
+       private readonly IAirlineService airlineService;
 
         public FlightController(IFlightService flightService, IAirlineService airlineService)
         {
@@ -58,7 +58,7 @@ namespace AirTickets.Web.Controllers
         {
             if (price < 0)
             {
-                return this.AllFlights();
+                return RedirectToAction("AllFlights");
             }
             else
             {
