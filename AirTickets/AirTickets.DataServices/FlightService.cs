@@ -48,13 +48,6 @@ namespace AirTickets.DataServices
 
         public IEnumerable<FlightModel> GetFlightByPrice(int searchTerm)
         {
-            //return string.IsNullOrEmpty(searchTerm) ? this.flightSetWrapper.All.Select(FlightModel.Create).ToList()
-            //    : this.flightSetWrapper.All.Where(b =>
-            //    (string.IsNullOrEmpty(b..Title) ? false : b.Title.Contains(searchTerm))
-            //    ||
-            //    (string.IsNullOrEmpty(b.Author) ? false : b.Author.Contains(searchTerm)))
-            //    .Select(FlightModel.Create).ToList();
-
             if (searchTerm > 0)
             {
                 return this.flightRepo.All

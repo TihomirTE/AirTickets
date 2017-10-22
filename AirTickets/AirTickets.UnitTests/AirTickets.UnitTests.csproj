@@ -104,11 +104,11 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AirTickets.DataServices\BookServiceTests\Constructor_Should.cs" />
-    <Compile Include="AirTickets.DataServices\BookServiceTests\GetById_Should.cs" />
+    <Compile Include="AirTickets.DataServices\FlightServiceTests\Constructor_Should.cs" />
+    <Compile Include="AirTickets.DataServices\FlightServiceTests\GetById_Should.cs" />
     <Compile Include="AirTickets.Web\Controllers\AccountControllerTests\Login_Should.cs" />
-    <Compile Include="AirTickets.Web\Controllers\BookControllerTests\Constructor_Should.cs" />
-    <Compile Include="AirTickets.Web\Controllers\BookControllerTests\Details_Should.cs" />
+    <Compile Include="AirTickets.Web\Controllers\FlightControllerTests\Constructor_Should.cs" />
+    <Compile Include="AirTickets.Web\Controllers\FlightControllerTests\Details_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>

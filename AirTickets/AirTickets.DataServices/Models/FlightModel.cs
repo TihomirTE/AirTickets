@@ -9,6 +9,7 @@ namespace AirTickets.DataServices.Models
     {
         public FlightModel()
         {
+
         }
 
         public FlightModel(Flight flight)
