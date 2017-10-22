@@ -24,25 +24,11 @@ namespace AirTickets.DataServices
             this.dbContext = dbContext;
         }
         
-        public IEnumerable<AirlineModel> GetAllAirlinesSortedById()
-        {
-            return this.airlineRepo.All.ToList()
-                .OrderBy(x => x.Id)
-                .AsQueryable()
-                .Select(AirlineModel.Create)
-                .ToList();
-        }
-
         public IEnumerable<AirlineModel> GetAllAirlinesWithFlightsIncluded()
         {
             return this.airlineRepo.AllWithInclude(x => x.Flights)
                 .Select(AirlineModel.Create)
                 .ToList();
-        }
-
-        public AirlineModel GetById(Guid id)
-        {
-            return new AirlineModel(this.airlineRepo.GetById(id));
         }
     }
 }

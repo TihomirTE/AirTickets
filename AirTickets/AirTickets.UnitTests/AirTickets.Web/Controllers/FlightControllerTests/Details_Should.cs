@@ -60,7 +60,7 @@ namespace AirTickets.UnitTests.AirTickets.Controllers.BookControllerTests
             Guid? airlineId = Guid.NewGuid();
 
             flightServiceMock.Setup(m => m.GetById(flightId.Value)).Returns((FlightModel)null);
-            airlineServiceMock.Setup(m => m.GetById(airlineId.Value)).Returns((AirlineModel)null);
+            //airlineServiceMock.Setup(m => m.GetById(airlineId.Value)).Returns((AirlineModel)null);
 
             var flightController = new FlightController(flightServiceMock.Object, airlineServiceMock.Object);
 
