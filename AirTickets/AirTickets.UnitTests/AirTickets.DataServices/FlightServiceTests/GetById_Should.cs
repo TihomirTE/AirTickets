@@ -17,6 +17,7 @@ namespace AirTickets.UnitTests.AirTickets.DataServices.FlightServiceTests
             // Arrange
             var wrapperMock = new Mock<IEfDbSetWrapper<Flight>>();
             var dbContextMock = new Mock<IAirTicketDbContextSaveChanges>();
+
             Guid? flightId = Guid.NewGuid();
 
             wrapperMock.Setup(m => m.GetById(flightId.Value)).Returns(new Flight() { Id = flightId.Value });

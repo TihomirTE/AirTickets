@@ -105,9 +105,12 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="AirTickets.DataServices\FlightServiceTests\Constructor_Should.cs" />
+    <Compile Include="AirTickets.DataServices\FlightServiceTests\GetAllFlights_Should.cs" />
     <Compile Include="AirTickets.DataServices\FlightServiceTests\GetById_Should.cs" />
+    <Compile Include="AirTickets.DataServices\FlightServiceTests\GetFlightByPrice_Should.cs" />
     <Compile Include="AirTickets.Web\Controllers\AccountControllerTests\Login_Should.cs" />
     <Compile Include="AirTickets.Web\Controllers\FlightControllerTests\AllFlight_Should.cs" />
+    <Compile Include="AirTickets.Web\Controllers\FlightControllerTests\All_Should.cs" />
     <Compile Include="AirTickets.Web\Controllers\FlightControllerTests\Constructor_Should.cs" />
     <Compile Include="AirTickets.Web\Controllers\FlightControllerTests\Details_Should.cs" />
     <Compile Include="AirTickets.Web\Controllers\FlightControllerTests\FilteredFlights_Should.cs" />
