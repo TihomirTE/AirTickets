@@ -22,10 +22,10 @@ namespace AirTickets.UnitTests.AirTickets.DataServices.FlightServiceTests
 
             wrapperMock.Setup(m => m.GetById(flightId.Value)).Returns(new Flight() { Id = flightId.Value });
 
-            FlightService flightService = new FlightService(wrapperMock.Object, dbContextMock.Object);
+            var flightService = new FlightService(wrapperMock.Object, dbContextMock.Object);
 
             // Act
-            FlightModel flightModel = flightService.GetById(flightId);
+            var flightModel = flightService.GetById(flightId);
 
             // Assert
             Assert.IsNotNull(flightModel);
@@ -38,10 +38,10 @@ namespace AirTickets.UnitTests.AirTickets.DataServices.FlightServiceTests
             var wrapperMock = new Mock<IEfDbSetWrapper<Flight>>();
             var dbContextMock = new Mock<IAirTicketDbContextSaveChanges>();
 
-            FlightService flightService = new FlightService(wrapperMock.Object, dbContextMock.Object);
+            var flightService = new FlightService(wrapperMock.Object, dbContextMock.Object);
 
             // Act
-            FlightModel flightModel = flightService.GetById(null);
+            var flightModel = flightService.GetById(null);
 
             // Assert
             Assert.IsNull(flightModel);
@@ -57,7 +57,7 @@ namespace AirTickets.UnitTests.AirTickets.DataServices.FlightServiceTests
 
             wrapperMock.Setup(m => m.GetById(flightId.Value)).Returns((Flight)null);
 
-            FlightService flightService = new FlightService(wrapperMock.Object, dbContextMock.Object);
+            var flightService = new FlightService(wrapperMock.Object, dbContextMock.Object);
 
             // Act
             FlightModel flightModel = flightService.GetById(flightId);

@@ -11,6 +11,6 @@ namespace AirTickets.DataServices.Contracts
     {
         IEnumerable<AirportModel> GetAllAirportsSortedByName();
 
-        AirportModel GetById(Guid id);
+        AirportModel GetById(Guid? id);
     }
 }

@@ -104,6 +104,9 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="AirTickets.DataServices\AirportServiceTests\Constructor_Should.cs" />
+    <Compile Include="AirTickets.DataServices\AirportServiceTests\GetAllAirportsSortedByName_Should.cs" />
+    <Compile Include="AirTickets.DataServices\AirportServiceTests\GetById_Should.cs" />
     <Compile Include="AirTickets.DataServices\FlightServiceTests\Constructor_Should.cs" />
     <Compile Include="AirTickets.DataServices\FlightServiceTests\GetAllFlights_Should.cs" />
     <Compile Include="AirTickets.DataServices\FlightServiceTests\GetById_Should.cs" />

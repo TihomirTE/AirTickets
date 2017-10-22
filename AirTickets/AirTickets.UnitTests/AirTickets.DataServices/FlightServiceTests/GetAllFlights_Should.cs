@@ -23,7 +23,7 @@ namespace AirTickets.UnitTests.AirTickets.DataServices.FlightServiceTests
             var wrapperMock = new Mock<IEfDbSetWrapper<Flight>>();
             var dbContextMock = new Mock<IAirTicketDbContextSaveChanges>();
 
-            var models = new List<Flight>();
+            var models = new List<Flight>() { new Flight { Title = "FA123", Price = 50, Duration = TimeSpan.Parse("01:10:00"), TravelClass = TravelClass.First } };
 
             wrapperMock.Setup(x => x.AllWithInclude(y => y.Airline)).Returns(models.AsQueryable());
 
@@ -34,16 +34,17 @@ namespace AirTickets.UnitTests.AirTickets.DataServices.FlightServiceTests
 
             // Assert
             Assert.IsNotNull(result);
+            Assert.AreEqual(1, result.Count());
         }
 
         [TestMethod]
-        public void ReturnNoFlights_WhenPassetParametersAreNotCorrect()
+        public void ReturnFlightModel_WhenPassetParametersAreCorrect()
         {
             // Arrange
             var wrapperMock = new Mock<IEfDbSetWrapper<Flight>>();
             var dbContextMock = new Mock<IAirTicketDbContextSaveChanges>();
 
-            var models = new List<Flight>(0);
+            var models = new List<Flight>();
 
             wrapperMock.Setup(x => x.AllWithInclude(y => y.Airline)).Returns(models.AsQueryable());
 

@@ -4,8 +4,12 @@ using AirTickets.DataServices;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using Moq;
 using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-namespace AirTickets.UnitTests.AirTickets.DataServices.FlightServiceTests
+namespace AirTickets.UnitTests.AirTickets.DataServices.AirportServiceTests
 {
     [TestClass]
     public class Constructor_Should
@@ -14,34 +18,34 @@ namespace AirTickets.UnitTests.AirTickets.DataServices.FlightServiceTests
         public void ReturnsAnInstance_WhenBothParametersAreNotNull()
         {
             // Arrange
-            var wrapperMock = new Mock<IEfDbSetWrapper<Flight>>();
+            var wrapperMock = new Mock<IEfDbSetWrapper<Airport>>();
             var dbContextMock = new Mock<IAirTicketDbContextSaveChanges>();
 
             // Act
-            var flightService = new FlightService(wrapperMock.Object, dbContextMock.Object);
+            var airportService = new AirportService(wrapperMock.Object, dbContextMock.Object);
 
             // Assert
-            Assert.IsNotNull(flightService);
+            Assert.IsNotNull(airportService);
         }
 
         [TestMethod]
-        public void ThrowException_WhenFlightSetWrapperIsNull()
+        public void ThrowException_WhenAirportSetWrapperIsNull()
         {
             // Arrange
             var dbContextMock = new Mock<IAirTicketDbContextSaveChanges>();
 
             // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new FlightService(null, dbContextMock.Object));
+            Assert.ThrowsException<ArgumentNullException>(() => new AirportService(null, dbContextMock.Object));
         }
 
         [TestMethod]
         public void ThrowException_WhenDbContextIsNull()
         {
             // Arrange
-            var wrapperMock = new Mock<IEfDbSetWrapper<Flight>>();
+            var wrapperMock = new Mock<IEfDbSetWrapper<Airport>>();
 
             // Act & Assert
-            Assert.ThrowsException<ArgumentNullException>(() => new FlightService(wrapperMock.Object, null));
+            Assert.ThrowsException<ArgumentNullException>(() => new AirportService(wrapperMock.Object, null));
         }
     }
 }

@@ -34,9 +34,20 @@ namespace AirTickets.DataServices
                 .ToList();
         }
 
-        public AirportModel GetById(Guid id)
+        public AirportModel GetById(Guid? id)
         {
-            return new AirportModel(this.airportRepo.GetById(id));
+            AirportModel result = null;
+
+            if (id.HasValue)
+            {
+                Airport airport = this.airportRepo.GetById(id.Value);
+                if (airport != null)
+                {
+                    result = new AirportModel(airport);
+                }
+            }
+
+            return result;
         }
     }
 }
