@@ -27,8 +27,6 @@ namespace AirTickets.UnitTests.AirTickets.Web.Controllers.FlightControllerTests
 
             var collection = new List<FlightModel>();
 
-           //var collectionFlighViewtModels = new List<FlightViewModel>();
-
             flightServiceMock.Setup(x => x.GetAllFlights()).Returns(collection);
 
             var flightController = new FlightController(flightServiceMock.Object, airlineServiceMock.Object);
