@@ -9,13 +9,15 @@
     ![image](./ProjectImages/homepage.png)
 
 ### User part
+
+- Flights
     - Table of available flights
     - Show details on every flight
     - Search flight by price
     ![image](./ProjectImages/flightpage.png)
 
 ### Run Project 
-    - Azure : url [a link](https://airtickets-bg.azurewebservices.com)
+    - Azure : url http://buyairtickets.azurewebsites.net/
     - localhost : Ctrl + F5 to start from Visual Studio
 
 ### Continuous Integration - Jenkins

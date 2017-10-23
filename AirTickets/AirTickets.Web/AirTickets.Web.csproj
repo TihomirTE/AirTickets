@@ -662,6 +662,8 @@
     <Content Include="Content\kendo\kendo.silver.mobile.min.css.map" />
     <Content Include="Content\kendo\kendo.uniform.min.css.map" />
     <Content Include="Content\kendo\kendo.uniform.mobile.min.css.map" />
+    <None Include="Properties\PublishProfiles\buyairtickets - FTP.pubxml" />
+    <None Include="Properties\PublishProfiles\buyairtickets - Web Deploy.pubxml" />
     <None Include="Properties\PublishProfiles\local-deploy.pubxml" />
     <None Include="Scripts\jquery-1.10.2.intellisense.js" />
     <Content Include="Scripts\jquery-1.10.2.js" />
