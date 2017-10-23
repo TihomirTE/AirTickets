@@ -78,8 +78,7 @@
     <Otherwise />
   </Choose>
   <ItemGroup>
-    <Compile Include="AirTickets.DataServices\BookServiceTests\GetById_Should.cs" />
-    <Compile Include="AirTickets.DataServices\CategoryServiceTests\GetAllCategoriesSortedById_Should.cs" />
+    <Compile Include="AirTickets.DataServices\FlightServiceTests\GetById_Should.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestsInitializer.cs" />
   </ItemGroup>
