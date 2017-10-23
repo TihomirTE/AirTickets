@@ -1,8 +1,28 @@
 # AirTickets
 
-## Website for buying tickets - MVC 5 project
+## Website for buying tickets - MVC 5 final project
 
-## Build Status
+### Public part
 
-[![Build status](https://ci.appveyor.com/api/projects/status/5btjx3b11c7h2tk7?svg=true)]
-(https://ci.appveyor.com/project/TihomirTE/airtickets)
+- Home
+    - Table of available airports
+    ![image](./ProjectImages/homepage.png)
+
+### User part
+    - Table of available flights
+    - Show details on every flight
+    - Search flight by price
+    ![image](./ProjectImages/flightpage.png)
+
+### Run Project 
+    - Azure : url [a link](https://airtickets-bg.azurewebservices.com)
+    - localhost : Ctrl + F5 to start from Visual Studio
+
+### Continuous Integration - Jenkins
+    - Unit tests are runned automaticaly on every deploy on GitHub repo
+
+#### Future releases
+
+    - Administrator part
+    - More details flight information
+    - Book flight and added to user profile
