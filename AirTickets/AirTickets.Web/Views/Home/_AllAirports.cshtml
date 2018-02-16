@@ -1,20 +1,26 @@
-﻿@model IEnumerable<AirportViewModel>
+﻿@using GridMvc.Html
 
-@Styles.Render("~/Content/kendo/css")
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/kendo")
-
-
+@model IEnumerable<AirportViewModel>
 
 <div>
-    @(Html.Kendo().Grid(Model)
-        .Name("grid")
-        .Columns(columns =>
-        {
-            columns.Bound(x => x.Name).Title("Airport Name");
-            columns.Bound(x => x.AirportCode).Title("ICAO abbreviation");
-        })
-         .Pageable()
-            .Sortable()
-    )
+    @Html.Grid(Model).Columns(column =>
+{
+    column.Add(a => a.Name).Titled("Airport Name");
+    column.Add(a => a.AirportCode).Titled("ICAO Abbreviation");
+}).WithPaging(3)
+
 </div>
+
+
+@*<div>
+        @(Html.Kendo().Grid(Model)
+            .Name("grid")
+            .Columns(columns =>
+            {
+                columns.Bound(x => x.Name).Title("Airport Name");
+                columns.Bound(x => x.AirportCode).Title("ICAO abbreviation");
+            })
+             .Pageable()
+                .Sortable()
+        )
+    </div>*@

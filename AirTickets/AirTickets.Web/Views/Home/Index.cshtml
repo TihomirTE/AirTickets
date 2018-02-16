@@ -3,9 +3,7 @@
     ViewBag.Title = "Home Page";
 }
 
-@Styles.Render("~/Content/kendo/css")
 @Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/kendo")
 
 <div class="container body-content">
     <div class="row">
@@ -30,7 +28,7 @@
 
     <div class="left"><h5>Date</h5></div>
 
-    <div class="row">
+    @*<div class="row">
         <div class="col-md-12" id="special-days">
             @(Html.Kendo().Calendar()
         .Name("calendar")
@@ -53,7 +51,7 @@
             .WeekNumber("<a class='italic'>#= data.weekNumber #</a>"))
             )
         </div>
-    </div>
+    </div>*@
 </div>
 
 <script>

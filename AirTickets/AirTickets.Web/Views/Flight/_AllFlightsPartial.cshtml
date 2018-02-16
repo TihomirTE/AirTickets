@@ -1,38 +1,18 @@
-﻿@model IEnumerable<FlightViewModel>
+﻿@using GridMvc.Html
 
-@Styles.Render("~/Content/kendo/css")
-@Scripts.Render("~/bundles/jquery")
-@Scripts.Render("~/bundles/kendo")
+@model IEnumerable<FlightViewModel>
 
 <div>
-    @*@foreach (var airline in Model)
-        {
-            <h3>@airline.Name</h3>
-            <div class="panel">
-                @foreach (var flight in airline.Flights)
-                {
-                    @Html.DisplayFor(c => flight)
-                }
-            </div>
-        }*@
-
-    @(Html.Kendo().Grid(Model)
-            .Name("grid")
-            .Columns(columns =>
-            {
-            columns.Bound(x => x.Airline);
-            columns.Bound(x => x.Title).Title("Flight Number");
-            columns.Bound(x => x.Price);
-            columns.Bound(x => x.Duration).Title("Flight Duration");
-            columns.Bound(x => x.Id)
-                .Title("Details")
-                .Template(@<text>
-                    @Html.ActionLink("Show Details", "Details", new { id = @item.Id })
-                </text>);
-
-            })
-            .Pageable()
-            .Sortable()
-    )
-
+    @Html.Grid(Model).Columns(column =>
+{
+    column.Add(c => c.Airline);
+    column.Add(c => c.Title).Titled("Flight Number");
+    column.Add(c => c.Price);
+    column.Add(c => c.Duration).Titled("Flight Duration").Filterable(true);
+    column.Add(c => c.Id)
+        .Titled("Details")
+        .Filterable(true).Sanitized(false).Encoded(false)
+        .RenderValueAs(c => Html.ActionLink("Show Details", "Details", "Flight", new { flightId = c.Id }, null).ToHtmlString());
+}).WithPaging(3).Sortable(true)
 </div>
+
