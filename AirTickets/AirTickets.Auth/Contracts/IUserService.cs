@@ -1,4 +1,5 @@
 ﻿using AirTickets.Auth.Models;
+using AirTickets.Data.Models;
 using Microsoft.AspNet.Identity;
 using System;
 using System.Collections.Generic;
@@ -11,13 +12,13 @@ namespace AirTickets.Auth.Contracts
     {
         IIdentityMessageService SmsService { get; set; }
 
-        Task<IdentityResult> CreateAsync(ApplicationUser user, string password);
+        Task<IdentityResult> CreateAsync(User user, string password);
 
         Task<IdentityResult> ConfirmEmailAsync(string userId, string token);
 
         Task<bool> IsEmailConfirmedAsync(string userId);
 
-        Task<ApplicationUser> FindByNameAsync(string userName);
+        Task<User> FindByNameAsync(string userName);
 
         Task<IdentityResult> ResetPasswordAsync(string userId, string token, string newPassword);
 
@@ -25,7 +26,7 @@ namespace AirTickets.Auth.Contracts
 
         Task<IdentityResult> AddLoginAsync(string userId, UserLoginInfo login);
 
-        Task<IdentityResult> CreateAsync(ApplicationUser user);
+        Task<IdentityResult> CreateAsync(User user);
 
         Task<string> GenerateChangePhoneNumberTokenAsync(string userId, string phoneNumber);
 
@@ -37,7 +38,7 @@ namespace AirTickets.Auth.Contracts
 
         Task<IdentityResult> RemoveLoginAsync(string userId, UserLoginInfo login);
 
-        Task<ApplicationUser> FindByIdAsync(string userId);
+        Task<User> FindByIdAsync(string userId);
 
         Task<IdentityResult> SetTwoFactorEnabledAsync(string userId, bool enabled);
 
@@ -49,6 +50,6 @@ namespace AirTickets.Auth.Contracts
 
         Task<IdentityResult> AddPasswordAsync(string userId, string password);
 
-        ApplicationUser FindById(string userId);
+        User FindById(string userId);
     }
 }

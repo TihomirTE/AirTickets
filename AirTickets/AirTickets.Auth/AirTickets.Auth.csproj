@@ -129,6 +129,20 @@
     <None Include="App.config" />
     <None Include="packages.config" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\AirTickets.Data.Contracts\AirTickets.Data.Contracts.csproj">
+      <Project>{2350F916-DB40-405F-8B2C-B26B9E6DA0DD}</Project>
+      <Name>AirTickets.Data.Contracts</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AirTickets.Data.Models\AirTickets.Data.Models.csproj">
+      <Project>{062B34F1-094D-4AD1-9DAF-88613992B153}</Project>
+      <Name>AirTickets.Data.Models</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\AirTickets.Data\AirTickets.Data.csproj">
+      <Project>{869153BD-E7E5-457B-9FC8-A9448F4032CC}</Project>
+      <Name>AirTickets.Data</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 
        Other similar extension points exist, see Microsoft.Common.targets.

@@ -1,5 +1,4 @@
 ﻿using AirTickets.Data;
-using AirTickets.Data.Migrations;
 using System.Data.Entity;
 using System.Web.Mvc;
 using System.Web.Optimization;
@@ -19,7 +18,7 @@ namespace AirTickets.Web
             ViewEngines.Engines.Clear();
             ViewEngines.Engines.Add(new RazorViewEngine());
 
-            Database.SetInitializer(new MigrateDatabaseToLatestVersion<AirTicketEfDbContext, Configuration>());
+            //Database.SetInitializer(new MigrateDatabaseToLatestVersion<AirTicketEfDbContext>());
         }
     }
 }

@@ -49,9 +49,9 @@ namespace AirTickets.Web.Models
     public class LoginViewModel
     {
         [Required]
-        [Display(Name = "Email")]
+        [Display(Name = "UserName")]
         [EmailAddress]
-        public string Email { get; set; }
+        public string UserName { get; set; }
 
         [Required]
         [DataType(DataType.Password)]
@@ -64,6 +64,21 @@ namespace AirTickets.Web.Models
 
     public class RegisterViewModel
     {
+        //[Required]
+        //[DataType(DataType.Text)]
+        //[Display(Name = "First Name")]
+        //public string FirstName { get; set; }
+
+        //[Required]
+        //[DataType(DataType.Text)]
+        //[Display(Name = "Last Name")]
+        //public string LastName { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "UserName")]
+        public string UserName { get; set; }
+
         [Required]
         [EmailAddress]
         [Display(Name = "Email")]

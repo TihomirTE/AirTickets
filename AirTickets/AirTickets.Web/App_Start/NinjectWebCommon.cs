@@ -3,8 +3,10 @@ using AirTickets.Auth.Contracts;
 using AirTickets.Data;
 using AirTickets.Data.Contracts;
 using AirTickets.Data.EfRepository;
+using AirTickets.Data.Models;
 using AirTickets.DataServices;
 using AirTickets.DataServices.Contracts;
+using Microsoft.AspNet.Identity;
 using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Web.Infrastructure.DynamicModuleHelper;
 using Ninject;
@@ -17,7 +19,7 @@ using System.Web;
 
 namespace AirTickets.Web.App_Start
 {
-    public static class NinjectWebCommon 
+    public static class NinjectWebCommon
     {
         private static readonly Bootstrapper bootstrapper = new Bootstrapper();
 
@@ -30,13 +32,13 @@ namespace AirTickets.Web.App_Start
         /// <summary>
         /// Starts the application
         /// </summary>
-        public static void Start() 
+        public static void Start()
         {
             DynamicModuleUtility.RegisterModule(typeof(OnePerRequestHttpModule));
             DynamicModuleUtility.RegisterModule(typeof(NinjectHttpModule));
             bootstrapper.Initialize(CreateKernel);
         }
-        
+
         /// <summary>
         /// Stops the application.
         /// </summary>
@@ -44,7 +46,7 @@ namespace AirTickets.Web.App_Start
         {
             bootstrapper.ShutDown();
         }
-        
+
         /// <summary>
         /// Creates the kernel that will manage your application.
         /// </summary>
@@ -75,13 +77,14 @@ namespace AirTickets.Web.App_Start
         {
             kernel.Bind<IAirTicketDbContextSaveChanges>().To<AirTicketEfDbContext>().InRequestScope();
 
-            kernel.Bind<ISignInService>().ToMethod(_ => HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>());
-            kernel.Bind<IUserService>().ToMethod(_ => HttpContext.Current.GetOwinContext().GetUserManager<ApplicationUserManager>());
+            //kernel.Bind<ISignInService>().ToMethod(_ => HttpContext.Current.GetOwinContext().Get<ApplicationSignInManager>());
+            //kernel.Bind<IUserService>().ToMethod(_ => HttpContext.Current.GetOwinContext().GetUserManager<UserManager>());
+
 
             kernel.Bind(typeof(IEfDbSetWrapper<>)).To(typeof(EfDbSetWrapper<>));
             kernel.Bind<IFlightService>().To<FlightService>();
             kernel.Bind<IAirlineService>().To<AirlineService>();
             kernel.Bind<IAirportService>().To<AirportService>();
-        }        
+        }
     }
 }

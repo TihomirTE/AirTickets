@@ -7,24 +7,61 @@ using Microsoft.AspNet.Identity.Owin;
 using Microsoft.Owin.Security;
 using Bytes2you.Validation;
 using AirTickets.Auth.Contracts;
-using AirTickets.Auth.Models;
 using AirTickets.Web.Models;
+using AirTickets.Data.Models;
+using AirTickets.Auth;
 
 namespace AirTickets.Web.Controllers
 {
     [Authorize]
     public class AccountController : Controller
     {
-        private readonly ISignInService signInService;
-        private readonly IUserService userService;
-        
-        public AccountController(ISignInService signInService, IUserService userService)
-        {
-            Guard.WhenArgument(signInService, "signInService").IsNull().Throw();
-            Guard.WhenArgument(userService, "userService").IsNull().Throw();
+        //private readonly ISignInService signInService;
+        //private readonly IUserService userService;
+        private ApplicationSignInManager _signInManager;
+        private ApplicationUserManager _userManager;
 
-            this.signInService = signInService;
-            this.userService = userService;
+        //public AccountController(ISignInService signInService, IUserService userService)
+        //{
+        //    Guard.WhenArgument(signInService, "signInService").IsNull().Throw();
+        //    Guard.WhenArgument(userService, "userService").IsNull().Throw();
+
+        //    this.signInService = signInService;
+        //    this.userService = userService;
+        //}
+
+        public AccountController()
+        {
+        }
+
+        public AccountController(ApplicationUserManager userManager, ApplicationSignInManager signInManager)
+        {
+            this.UserManager = userManager;
+            this.SignInManager = signInManager;
+        }
+
+        public ApplicationSignInManager SignInManager
+        {
+            get
+            {
+                return _signInManager ?? HttpContext.GetOwinContext().Get<ApplicationSignInManager>();
+            }
+            private set
+            {
+                _signInManager = value;
+            }
+        }
+
+        public ApplicationUserManager UserManager
+        {
+            get
+            {
+                return _userManager ?? HttpContext.GetOwinContext().GetUserManager<ApplicationUserManager>();
+            }
+            private set
+            {
+                _userManager = value;
+            }
         }
 
         //
@@ -50,7 +87,7 @@ namespace AirTickets.Web.Controllers
 
             // This doesn't count login failures towards account lockout
             // To enable password failures to trigger account lockout, change to shouldLockout: true
-            var result = await this.signInService.PasswordSignInAsync(model.Email, model.Password, model.RememberMe, shouldLockout: false);
+            var result = await this.SignInManager.PasswordSignInAsync(model.UserName, model.Password, model.RememberMe, shouldLockout: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -58,7 +95,7 @@ namespace AirTickets.Web.Controllers
                 case SignInStatus.LockedOut:
                     return View("Lockout");
                 case SignInStatus.RequiresVerification:
-                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, RememberMe = model.RememberMe });
+                    return RedirectToAction("SendCode", new { ReturnUrl = returnUrl, model.RememberMe });
                 case SignInStatus.Failure:
                 default:
                     ModelState.AddModelError("", "Invalid login attempt.");
@@ -72,7 +109,7 @@ namespace AirTickets.Web.Controllers
         public async Task<ActionResult> VerifyCode(string provider, string returnUrl, bool rememberMe)
         {
             // Require that the user has already logged in via username/password or external login
-            if (!await this.signInService.HasBeenVerifiedAsync())
+            if (!await this.SignInManager.HasBeenVerifiedAsync())
             {
                 return View("Error");
             }
@@ -95,7 +132,7 @@ namespace AirTickets.Web.Controllers
             // If a user enters incorrect codes for a specified amount of time then the user account 
             // will be locked out for a specified amount of time. 
             // You can configure the account lockout settings in IdentityConfig
-            var result = await this.signInService.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
+            var result = await this.SignInManager.TwoFactorSignInAsync(model.Provider, model.Code, isPersistent:  model.RememberMe, rememberBrowser: model.RememberBrowser);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -126,11 +163,18 @@ namespace AirTickets.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await this.userService.CreateAsync(user, model.Password);
+                var user = new User
+                {
+                    //FirstName = model.FirstName,
+                    //LastName = model.LastName,
+                    UserName = model.UserName,
+                    Email = model.Email
+                };
+
+                var result = await UserManager.CreateAsync(user, model.Password);
                 if (result.Succeeded)
                 {
-                    await this.signInService.SignInAsync(user, isPersistent:false, rememberBrowser:false);
+                    await this.SignInManager.SignInAsync(user, isPersistent:false, rememberBrowser:false);
                     
                     // For more information on how to enable account confirmation and password reset please visit http://go.microsoft.com/fwlink/?LinkID=320771
                     // Send an email with this link
@@ -138,7 +182,7 @@ namespace AirTickets.Web.Controllers
                     // var callbackUrl = Url.Action("ConfirmEmail", "Account", new { userId = user.Id, code = code }, protocol: Request.Url.Scheme);
                     // await this.userService.SendEmailAsync(user.Id, "Confirm your account", "Please confirm your account by clicking <a href=\"" + callbackUrl + "\">here</a>");
 
-                    return RedirectToAction("Index", "Home");
+                    return RedirectToAction("All", "Flight");
                 }
                 AddErrors(result);
             }
@@ -156,7 +200,7 @@ namespace AirTickets.Web.Controllers
             {
                 return View("Error");
             }
-            var result = await this.userService.ConfirmEmailAsync(userId, code);
+            var result = await this.UserManager.ConfirmEmailAsync(userId, code);
             return View(result.Succeeded ? "ConfirmEmail" : "Error");
         }
 
@@ -177,8 +221,8 @@ namespace AirTickets.Web.Controllers
         {
             if (ModelState.IsValid)
             {
-                var user = await this.userService.FindByNameAsync(model.Email);
-                if (user == null || !(await this.userService.IsEmailConfirmedAsync(user.Id)))
+                var user = await this.UserManager.FindByNameAsync(model.Email);
+                if (user == null || !(await this.UserManager.IsEmailConfirmedAsync(user.Id)))
                 {
                     // Don't reveal that the user does not exist or is not confirmed
                     return View("ForgotPasswordConfirmation");
@@ -223,13 +267,13 @@ namespace AirTickets.Web.Controllers
             {
                 return View(model);
             }
-            var user = await this.userService.FindByNameAsync(model.Email);
+            var user = await this.UserManager.FindByNameAsync(model.Email);
             if (user == null)
             {
                 // Don't reveal that the user does not exist
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
             }
-            var result = await this.userService.ResetPasswordAsync(user.Id, model.Code, model.Password);
+            var result = await this.UserManager.ResetPasswordAsync(user.Id, model.Code, model.Password);
             if (result.Succeeded)
             {
                 return RedirectToAction("ResetPasswordConfirmation", "Account");
@@ -262,12 +306,12 @@ namespace AirTickets.Web.Controllers
         [AllowAnonymous]
         public async Task<ActionResult> SendCode(string returnUrl, bool rememberMe)
         {
-            var userId = await this.signInService.GetVerifiedUserIdAsync();
+            var userId = await this.SignInManager.GetVerifiedUserIdAsync();
             if (userId == null)
             {
                 return View("Error");
             }
-            var userFactors = await this.userService.GetValidTwoFactorProvidersAsync(userId);
+            var userFactors = await this.UserManager.GetValidTwoFactorProvidersAsync(userId);
             var factorOptions = userFactors.Select(purpose => new SelectListItem { Text = purpose, Value = purpose }).ToList();
             return View(new SendCodeViewModel { Providers = factorOptions, ReturnUrl = returnUrl, RememberMe = rememberMe });
         }
@@ -285,11 +329,11 @@ namespace AirTickets.Web.Controllers
             }
 
             // Generate the token and send it
-            if (!await this.signInService.SendTwoFactorCodeAsync(model.SelectedProvider))
+            if (!await this.SignInManager.SendTwoFactorCodeAsync(model.SelectedProvider))
             {
                 return View("Error");
             }
-            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, ReturnUrl = model.ReturnUrl, RememberMe = model.RememberMe });
+            return RedirectToAction("VerifyCode", new { Provider = model.SelectedProvider, model.ReturnUrl, model.RememberMe });
         }
 
         //
@@ -304,7 +348,7 @@ namespace AirTickets.Web.Controllers
             }
 
             // Sign in the user with this external login provider if the user already has a login
-            var result = await this.signInService.ExternalSignInAsync(loginInfo, isPersistent: false);
+            var result = await this.SignInManager.ExternalSignInAsync(loginInfo, isPersistent: false);
             switch (result)
             {
                 case SignInStatus.Success:
@@ -324,41 +368,47 @@ namespace AirTickets.Web.Controllers
 
         //
         // POST: /Account/ExternalLoginConfirmation
-        [HttpPost]
-        [AllowAnonymous]
-        [ValidateAntiForgeryToken]
-        public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
-        {
-            if (User.Identity.IsAuthenticated)
-            {
-                return RedirectToAction("Index", "Manage");
-            }
+        //[HttpPost]
+        //[AllowAnonymous]
+        //[ValidateAntiForgeryToken]
+        //public async Task<ActionResult> ExternalLoginConfirmation(ExternalLoginConfirmationViewModel model, string returnUrl)
+        //{
+        //    if (User.Identity.IsAuthenticated)
+        //    {
+        //        return RedirectToAction("Index", "Manage");
+        //    }
 
-            if (ModelState.IsValid)
-            {
-                // Get the information about the user from the external login provider
-                var info = await AuthenticationManager.GetExternalLoginInfoAsync();
-                if (info == null)
-                {
-                    return View("ExternalLoginFailure");
-                }
-                var user = new ApplicationUser { UserName = model.Email, Email = model.Email };
-                var result = await this.userService.CreateAsync(user);
-                if (result.Succeeded)
-                {
-                    result = await this.userService.AddLoginAsync(user.Id, info.Login);
-                    if (result.Succeeded)
-                    {
-                        await this.signInService.SignInAsync(user, isPersistent: false, rememberBrowser: false);
-                        return RedirectToLocal(returnUrl);
-                    }
-                }
-                AddErrors(result);
-            }
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Get the information about the user from the external login provider
+        //        var info = await AuthenticationManager.GetExternalLoginInfoAsync();
+        //        if (info == null)
+        //        {
+        //            return View("ExternalLoginFailure");
+        //        }
 
-            ViewBag.ReturnUrl = returnUrl;
-            return View(model);
-        }
+        //        var user = new User
+        //        {
+        //            UserName = model.Email,
+        //            Email = model.Email
+        //        };
+
+        //        var result = await this.userService.CreateAsync(user);
+        //        if (result.Succeeded)
+        //        {
+        //            result = await this.userService.AddLoginAsync(user.Id, info.Login);
+        //            if (result.Succeeded)
+        //            {
+        //                await this.signInService.SignInAsync(user, isPersistent: false, rememberBrowser: false);
+        //                return RedirectToLocal(returnUrl);
+        //            }
+        //        }
+        //        AddErrors(result);
+        //    }
+
+        //    ViewBag.ReturnUrl = returnUrl;
+        //    return View(model);
+        //}
 
         //
         // POST: /Account/LogOff
@@ -382,14 +432,14 @@ namespace AirTickets.Web.Controllers
         {
             if (disposing)
             {
-                if (this.userService != null)
+                if (this._userManager != null)
                 {
-                    this.userService.Dispose();
+                    this._userManager.Dispose();
                 }
 
-                if (this.signInService != null)
+                if (this._signInManager != null)
                 {
-                    this.signInService.Dispose();
+                    this._signInManager.Dispose();
                 }
             }
 
